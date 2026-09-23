@@ -227,7 +227,7 @@ def contact_rate_allowed(ip: str) -> bool:
 
 @app.get("/api/health")
 def health():
-    return jsonify({"ok": True, "version": "1.0", "supabase_configured": configured()})
+    return jsonify({"ok": True, "version": "1.1.1", "supabase_configured": configured()})
 
 
 @app.get("/api/public/bootstrap")

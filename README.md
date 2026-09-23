@@ -1,3 +1,5 @@
+**v1.1.1 hotfix:** corrige fotografía y tesis.
+
 # Portfolio Willer Torrico - v1.0
 
 Portfolio profesional bilingüe (ES/EN) orientado a **Data Analytics, GIS, Water Resources, Applied AI y consultoría remota/internacional**.

@@ -51,15 +51,52 @@ const esc = (value='') => String(value).replace(/[&<>'"]/g, ch => ({'&':'&amp;',
 const tr = key => t[state.lang]?.[key] ?? t.es[key] ?? key;
 const localized = (obj, key) => obj?.[`${key}_${state.lang}`] || obj?.[`${key}_es`] || obj?.[key] || '';
 
+function mergeCaseStudies(localRows=[], remoteRows=[]){
+  const byType = new Map();
+  (localRows || []).forEach(row => { if(row?.type) byType.set(row.type, row); });
+  (remoteRows || []).forEach(row => {
+    if(!row?.type) return;
+    const previous = byType.get(row.type) || {};
+    const remoteData = row.data_json && typeof row.data_json === 'object' ? row.data_json : null;
+    const previousData = previous.data_json && typeof previous.data_json === 'object' ? previous.data_json : {};
+    byType.set(row.type, { ...previous, ...row, data_json: remoteData ? { ...previousData, ...remoteData } : previousData });
+  });
+  return [...byType.values()];
+}
+
+function mergeBootstrap(localData={}, remoteData={}){
+  const out = { ...localData, ...remoteData };
+  out.profile = { ...(localData.profile || {}), ...(remoteData.profile || {}) };
+  for(const key of ['skills','education','experiences','projects']){
+    const remoteRows = remoteData?.[key];
+    out[key] = Array.isArray(remoteRows) && remoteRows.length ? remoteRows : (localData?.[key] || []);
+  }
+  out.case_studies = mergeCaseStudies(localData.case_studies || [], remoteData.case_studies || []);
+  out._meta = { ...(localData._meta || {}), ...(remoteData._meta || {}), localFallbackMerged: true };
+  return out;
+}
+
 async function loadData(){
+  let localData = {};
   try{
-    const res = await fetch('/api/public/bootstrap', {headers:{'Accept':'application/json'}});
-    if(!res.ok) throw new Error(`HTTP ${res.status}`);
-    state.data = await res.json();
+    const localRes = await fetch('/data/seed.json', {cache:'no-store'});
+    if(localRes.ok) localData = await localRes.json();
   }catch(err){
-    console.warn('API unavailable, loading static fallback', err);
-    const res = await fetch('/data/seed.json');
-    state.data = await res.json();
+    console.warn('Static seed unavailable', err);
+  }
+
+  state.data = localData;
+  try{
+    const res = await fetch('/api/public/bootstrap', {headers:{'Accept':'application/json'}, cache:'no-store'});
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const remoteData = await res.json();
+    state.data = mergeBootstrap(localData, remoteData);
+  }catch(err){
+    console.warn('API unavailable; using static portfolio data', err);
+  }
+
+  if(!state.data || !Object.keys(state.data).length){
+    state.data = {profile:{},skills:[],education:[],experiences:[],projects:[],case_studies:[]};
   }
   hydrate();
 }
@@ -98,7 +135,20 @@ function renderProfile(){
   setText('profileSummary', localized(p,'summary'));
   setText('profileLocation', localized(p,'location'));
   setText('cryptoNote', localized(p,'crypto_note'));
-  const photo = document.getElementById('profilePhoto'); if(p.photo_url) photo.src = p.photo_url;
+  const photo = document.getElementById('profilePhoto');
+  if(photo){
+    const formalPhoto = '/assets/img/willer-profile-formal.jpg';
+    const sourcePhoto = '/assets/img/willer-profile-source.jpg';
+    photo.onerror = () => {
+      const current = photo.getAttribute('src') || '';
+      if(!current.includes('willer-profile-formal.jpg')){
+        photo.src = formalPhoto;
+      }else if(!current.includes('willer-profile-source.jpg')){
+        photo.src = sourcePhoto;
+      }
+    };
+    photo.src = (p.photo_url || formalPhoto).trim() || formalPhoto;
+  }
   const cv = document.getElementById('cvPrimary'); cv.href = state.lang === 'en' ? p.cv_en_url : p.cv_es_url;
   const links = [
     ['linkedinLink',p.linkedin_url],['contactLinkedin',p.linkedin_url],['githubLink',p.github_url],['contactGithub',p.github_url]
@@ -193,7 +243,12 @@ function renderThesis(){
   const d=getThesisCase();
   const content=document.getElementById('thesisContent');
   const stats=document.getElementById('thesisStats');
-  if(!content || !stats || !d.classes) return;
+  if(!content || !stats) return;
+  if(!Array.isArray(d.classes) || !d.classes.length){
+    stats.innerHTML='';
+    content.innerHTML=`<div class="thesis-findings"><h3>${state.lang==='es'?'Datos de tesis temporalmente no disponibles':'Thesis data temporarily unavailable'}</h3><p>${state.lang==='es'?'El portfolio no recibió el conjunto de datos de la tesis. La v1.1.1 incluye una copia local de respaldo para evitar que esta sección quede vacía.':'The portfolio did not receive the thesis dataset. v1.1.1 includes a local fallback copy so this section does not render empty.'}</p></div>`;
+    return;
+  }
 
   const statItems=[
     [d.validated_soil_units, state.lang==='es'?'unidades de suelo validadas':'validated soil units'],
