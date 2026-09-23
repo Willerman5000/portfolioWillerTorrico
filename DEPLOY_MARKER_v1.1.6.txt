@@ -1,0 +1,2 @@
+PORTFOLIO_DEPLOY_MARKER=1.1.6
+This file must be visible in the GitHub repository root before deploying Render.

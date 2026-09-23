@@ -1,5 +1,5 @@
-// v1.1.5 - self-contained media bundle. Critical portfolio images are embedded here.
-// v1.1.5 - Embedded fallback for critical portfolio media.
+// v1.1.6 - self-contained media bundle. Critical portfolio images are embedded here.
+// v1.1.6 - Embedded fallback for critical portfolio media.
 // The normal static assets remain in /frontend/assets; these data URIs are used only
 // as a fail-safe so a stale/missing binary file can never blank the UI.
 window.PORTFOLIO_EMBEDDED_MEDIA = Object.freeze({
@@ -341,7 +341,7 @@ function renderThesis(){
   if(!content || !stats) return;
   if(!Array.isArray(d.classes) || !d.classes.length){
     stats.innerHTML='';
-    content.innerHTML=`<div class="thesis-findings"><h3>${state.lang==='es'?'Datos de tesis temporalmente no disponibles':'Thesis data temporarily unavailable'}</h3><p>${state.lang==='es'?'El portfolio no recibió el conjunto de datos de la tesis. La v1.1.5 incluye una copia local de respaldo para evitar que esta sección quede vacía.':'The portfolio did not receive the thesis dataset. v1.1.5 includes a local fallback copy so this section does not render empty.'}</p></div>`;
+    content.innerHTML=`<div class="thesis-findings"><h3>${state.lang==='es'?'Datos de tesis temporalmente no disponibles':'Thesis data temporarily unavailable'}</h3><p>${state.lang==='es'?'El portfolio no recibió el conjunto de datos de la tesis. La v1.1.6 incluye una copia local de respaldo para evitar que esta sección quede vacía.':'The portfolio did not receive the thesis dataset. v1.1.6 includes a local fallback copy so this section does not render empty.'}</p></div>`;
     return;
   }
 

@@ -243,12 +243,56 @@ def static_cache_policy(response):
 
 @app.get("/api/health")
 def health():
-    return jsonify({"ok": True, "version": "1.1.5", "supabase_configured": configured()})
+    return jsonify({"ok": True, "version": "1.1.6", "supabase_configured": configured()})
 
 
 @app.get("/api/public/bootstrap")
 def public_bootstrap():
     return jsonify(get_public_bootstrap())
+
+
+@app.get("/api/diagnostics")
+def diagnostics():
+    critical = [
+        "index.html",
+        "admin.html",
+        "js/app.js",
+        "js/admin.js",
+        "assets/img/willer-profile-formal.jpg",
+        "assets/img/willer-profile-source.jpg",
+        "assets/thesis/infiltrability_map.jpeg",
+        "assets/thesis/soil_units_validated_map.jpeg",
+        "assets/thesis/location_map.png",
+        "assets/thesis/sampling_points_map.jpeg",
+    ]
+    files = {}
+    for rel in critical:
+        fp = FRONTEND_DIR / rel
+        files[rel] = {"exists": fp.is_file(), "bytes": fp.stat().st_size if fp.is_file() else 0}
+    index_text = (FRONTEND_DIR / "index.html").read_text(encoding="utf-8", errors="replace") if (FRONTEND_DIR / "index.html").is_file() else ""
+    admin_text = (FRONTEND_DIR / "admin.html").read_text(encoding="utf-8", errors="replace") if (FRONTEND_DIR / "admin.html").is_file() else ""
+    return jsonify({
+        "ok": True,
+        "version": "1.1.6",
+        "render_git_commit": os.getenv("RENDER_GIT_COMMIT", "unknown"),
+        "render_service_name": os.getenv("RENDER_SERVICE_NAME", "unknown"),
+        "index_has_integrity_attribute": "integrity=" in index_text,
+        "index_has_v116": "1.1.6" in index_text,
+        "admin_has_v116": "1.1.6" in admin_text,
+        "files": files,
+    })
+
+
+@app.get("/assets/img/willer-profile-formal.jpg")
+def profile_asset_hard_fallback():
+    fp = FRONTEND_DIR / "assets" / "img" / "willer-profile-formal.jpg"
+    if fp.is_file():
+        return send_from_directory(fp.parent, fp.name)
+    raw = base64.b64decode(PROFILE_IMAGE_B64)
+    response = app.response_class(raw, mimetype="image/jpeg")
+    response.headers["Cache-Control"] = "no-store, max-age=0"
+    response.headers["X-Portfolio-Media-Fallback"] = "embedded-profile"
+    return response
 
 
 @app.get("/api/media-check")
@@ -269,7 +313,7 @@ def media_check():
     for rel in critical:
         p = FRONTEND_DIR / rel
         status[rel] = {"exists": p.is_file(), "bytes": p.stat().st_size if p.is_file() else 0}
-    return jsonify({"ok": all(x["exists"] for x in status.values()), "version": "1.1.5", "files": status})
+    return jsonify({"ok": all(x["exists"] for x in status.values()), "version": "1.1.6", "files": status})
 
 
 @app.get("/api/media/profile")
@@ -500,6 +544,12 @@ def frontend_files(path: str):
 @app.errorhandler(413)
 def too_large(_err):
     return jsonify({"error": f"Archivo demasiado grande. Máximo {MAX_UPLOAD_MB} MB."}), 413
+
+
+app.logger.warning("PORTFOLIO BUILD 1.1.6 | commit=%s | frontend=%s | formal_photo=%s",
+                   os.getenv("RENDER_GIT_COMMIT", "unknown"),
+                   FRONTEND_DIR,
+                   (FRONTEND_DIR / "assets" / "img" / "willer-profile-formal.jpg").is_file())
 
 
 if __name__ == "__main__":
