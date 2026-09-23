@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio de Willer Gianni Torrico Arispe: analítica de datos, SIG, recursos hídricos, IA aplicada y consultoría internacional." />
+  <meta name="theme-color" content="#071423" />
+  <title>Willer Torrico · Data, GIS & Water Resources</title>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3ynwHnu3lZdOmQjMZBByC4k8pOeHE=" crossorigin="" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="topbar" id="topbar">
+    <div class="shell nav-wrap">
+      <a href="#home" class="brand" aria-label="Inicio">WT</a>
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#about" data-i18n="nav.about">Sobre mí</a>
+        <a href="#projects" data-i18n="nav.projects">Proyectos</a>
+        <a href="#data-lab" data-i18n="nav.data">Data Lab</a>
+        <a href="#gis" data-i18n="nav.gis">SIG</a>
+        <a href="#experience" data-i18n="nav.experience">Experiencia</a>
+        <a href="#contact" data-i18n="nav.contact">Contacto</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Cambiar tema" title="Tema">◐</button>
+        <div class="language-switch" aria-label="Idioma">
+          <button class="lang-btn active" data-lang="es" aria-pressed="true">ES</button>
+          <span>/</span>
+          <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">☰</button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" hidden>
+      <a href="#about" data-i18n="nav.about">Sobre mí</a>
+      <a href="#projects" data-i18n="nav.projects">Proyectos</a>
+      <a href="#data-lab" data-i18n="nav.data">Data Lab</a>
+      <a href="#gis" data-i18n="nav.gis">SIG</a>
+      <a href="#experience" data-i18n="nav.experience">Experiencia</a>
+      <a href="#contact" data-i18n="nav.contact">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section" id="home">
+      <div class="hero-orbit orbit-one"></div>
+      <div class="hero-orbit orbit-two"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow" id="profileEyebrow">Consultor internacional · Disponible para trabajo remoto</span>
+          <h1 id="profileName">Willer Gianni Torrico Arispe</h1>
+          <p class="hero-role" id="profileHeadline">Analítica de Datos · SIG · Recursos Hídricos · IA Aplicada</p>
+          <p class="hero-summary" id="profileSummary"></p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects" data-i18n="hero.work">Ver proyectos</a>
+            <a class="btn secondary" id="cvPrimary" href="/assets/cv/Willer_Torrico_CV_ATS_ES.pdf" download data-i18n="hero.cv">Descargar CV ATS</a>
+          </div>
+          <div class="quick-links" aria-label="Enlaces profesionales">
+            <a id="linkedinLink" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a id="githubLink" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a id="emailLink">Email ↗</a>
+          </div>
+          <div class="availability" id="availabilityChip"><span class="pulse"></span><span data-i18n="hero.available">Disponible para proyectos remotos</span></div>
+        </div>
+
+        <div class="hero-visual reveal delay-1" aria-label="Retrato profesional">
+          <div class="portrait-shell">
+            <div class="portrait-map-grid" aria-hidden="true"></div>
+            <img id="profilePhoto" src="/assets/img/willer-profile-source.jpg" alt="Willer Gianni Torrico Arispe" />
+            <div class="portrait-caption">
+              <strong>Data · GIS · Water · AI</strong>
+              <span id="profileLocation">Buenos Aires, Argentina · Remoto / Internacional</span>
+            </div>
+          </div>
+          <div class="metric-card metric-a"><span>10+</span><small data-i18n="hero.years">años de trayectoria</small></div>
+          <div class="metric-card metric-b"><span>GIS</span><small>QGIS · ArcGIS · GEE</small></div>
+          <div class="metric-card metric-c"><span>AI</span><small>LLM · Automation · Data</small></div>
+        </div>
+      </div>
+
+      <div class="shell capability-strip reveal delay-2">
+        <div><span class="cap-icon">▥</span><b>Data Analytics</b><small>Python · SQL · R</small></div>
+        <div><span class="cap-icon">⌖</span><b>GIS & Remote Sensing</b><small>QGIS · ArcGIS · GEE</small></div>
+        <div><span class="cap-icon">◉</span><b>Water Resources</b><small>Hydrology · Irrigation</small></div>
+        <div><span class="cap-icon">✦</span><b>Applied AI</b><small>LLM · Automation</small></div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="shell two-col">
+        <div class="section-heading reveal">
+          <span class="section-kicker" data-i18n="about.kicker">Perfil profesional</span>
+          <h2 data-i18n="about.title">Datos, territorio y decisiones</h2>
+          <p data-i18n="about.text">Mi perfil combina ciencias agroambientales, recursos hídricos, geotecnologías y analítica de datos. Esa combinación permite abordar problemas técnicos desde la evidencia, no desde una sola herramienta.</p>
+        </div>
+        <div class="about-panel reveal delay-1">
+          <div class="about-grid">
+            <article><strong>Data</strong><p data-i18n="about.data">Limpieza, análisis, estadística, visualización y comunicación de resultados.</p></article>
+            <article><strong>GIS</strong><p data-i18n="about.gis">Análisis espacial, cartografía, riesgo, ambiente y teledetección.</p></article>
+            <article><strong>Water</strong><p data-i18n="about.water">Gestión integral, riego, agrohidrología y evaluación técnica.</p></article>
+            <article><strong>AI</strong><p data-i18n="about.ai">Automatización, asistentes analíticos y flujos de trabajo con LLM.</p></article>
+          </div>
+          <p class="crypto-note" id="cryptoNote"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills">
+      <div class="shell">
+        <div class="section-heading compact reveal">
+          <span class="section-kicker" data-i18n="skills.kicker">Stack profesional</span>
+          <h2 data-i18n="skills.title">Herramientas y capacidades</h2>
+        </div>
+        <div class="filter-row" id="skillFilters" aria-label="Filtrar capacidades">
+          <button class="filter-chip active" data-filter="all" data-i18n="filters.all">Todas</button>
+          <button class="filter-chip" data-filter="data">Data</button>
+          <button class="filter-chip" data-filter="gis">GIS</button>
+          <button class="filter-chip" data-filter="water">Water</button>
+          <button class="filter-chip" data-filter="ai">AI</button>
+          <button class="filter-chip" data-filter="dev">Dev</button>
+        </div>
+        <div class="skills-grid" id="skillsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <span class="section-kicker" data-i18n="projects.kicker">Trabajo seleccionado</span>
+          <h2 data-i18n="projects.title">Casos que demuestran capacidad técnica</h2>
+          <p data-i18n="projects.text">Los proyectos se presentan por problema, datos, herramientas y resultado técnico. El foco está en evidencia verificable y transferible a trabajos remotos.</p>
+        </div>
+        <div class="filter-row reveal" id="projectFilters">
+          <button class="filter-chip active" data-filter="all" data-i18n="filters.all">Todos</button>
+          <button class="filter-chip" data-filter="data">Data</button>
+          <button class="filter-chip" data-filter="gis">GIS</button>
+          <button class="filter-chip" data-filter="water">Water</button>
+          <button class="filter-chip" data-filter="ai">AI</button>
+        </div>
+        <div class="projects-grid" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section data-lab" id="data-lab">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <span class="section-kicker" data-i18n="lab.kicker">Data Lab</span>
+          <h2 data-i18n="lab.title">Investigación agrícola convertida en una experiencia interactiva</h2>
+          <p data-i18n="lab.text">Este módulo transforma tablas técnicas en comparaciones visuales. Los datos se conservan tal como están documentados y el sistema señala inconsistencias de origen en vez de ocultarlas.</p>
+        </div>
+
+        <div class="lab-shell reveal delay-1">
+          <div class="lab-tabs" role="tablist">
+            <button class="lab-tab active" data-dataset="onion" role="tab" aria-selected="true" data-i18n="lab.onion">Cebolla</button>
+            <button class="lab-tab" data-dataset="tomato" role="tab" aria-selected="false" data-i18n="lab.tomato">Tomate</button>
+            <button class="lab-tab" data-dataset="garlic" role="tab" aria-selected="false" data-i18n="lab.garlic">Ajo</button>
+          </div>
+          <div class="lab-grid">
+            <div class="chart-card">
+              <div class="card-head">
+                <div><small data-i18n="lab.chartKicker">Comparación</small><h3 id="chartTitle">Rendimiento esperado · cebolla</h3></div>
+                <label class="sort-label"><span data-i18n="lab.sort">Ordenar</span><select id="yieldSort"><option value="desc" data-i18n="lab.highLow">Mayor a menor</option><option value="asc" data-i18n="lab.lowHigh">Menor a mayor</option><option value="name" data-i18n="lab.alpha">Alfabético</option></select></label>
+              </div>
+              <div class="bar-chart" id="barChart" aria-label="Gráfico de barras"></div>
+            </div>
+            <div class="insight-card" id="labInsight"></div>
+          </div>
+          <div class="data-table-wrap" id="dataTableWrap"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gis-section" id="gis">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <span class="section-kicker">GIS · Spatial Analytics</span>
+          <h2 data-i18n="gis.title">Experiencia territorial en un mapa interactivo</h2>
+          <p data-i18n="gis.text">El mapa muestra ciudades vinculadas a experiencias documentadas. La capa puede ampliarse posteriormente con mapas de tesis o archivos SHP/GeoJSON cuando se incorporen las fuentes originales.</p>
+        </div>
+        <div class="map-layout reveal delay-1">
+          <div id="careerMap" class="career-map" aria-label="Mapa de experiencia profesional"></div>
+          <aside class="map-side">
+            <h3 data-i18n="gis.coverage">Cobertura profesional</h3>
+            <div id="mapLegend" class="map-legend"></div>
+            <div class="source-note">
+              <b data-i18n="gis.thesisTitle">Módulo de tesis preparado</b>
+              <p data-i18n="gis.thesisText">La arquitectura acepta GeoJSON, capas SIG e indicadores de la tesis. En v1.0 no se publican resultados de tesis que no estén presentes en los archivos fuente adjuntos.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience-section" id="experience">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <span class="section-kicker" data-i18n="experience.kicker">Trayectoria</span>
+          <h2 data-i18n="experience.title">Experiencia multidisciplinaria</h2>
+          <p data-i18n="experience.text">Consultoría, sector público, cooperación internacional, investigación y proyectos socioambientales.</p>
+        </div>
+        <div class="filter-row reveal" id="experienceFilters">
+          <button class="filter-chip active" data-filter="all" data-i18n="filters.all">Todas</button>
+          <button class="filter-chip" data-filter="data">Data</button>
+          <button class="filter-chip" data-filter="gis">GIS</button>
+          <button class="filter-chip" data-filter="water">Water</button>
+          <button class="filter-chip" data-filter="environment" data-i18n="filters.environment">Ambiente</button>
+        </div>
+        <div class="timeline" id="experienceTimeline"></div>
+      </div>
+    </section>
+
+    <section class="section education-section" id="education">
+      <div class="shell">
+        <div class="section-heading compact reveal">
+          <span class="section-kicker" data-i18n="education.kicker">Formación</span>
+          <h2 data-i18n="education.title">Educación y especialización</h2>
+        </div>
+        <div class="education-grid" id="educationGrid"></div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="shell contact-grid">
+        <div class="contact-copy reveal">
+          <span class="section-kicker" data-i18n="contact.kicker">Contacto</span>
+          <h2 data-i18n="contact.title">¿Necesitás transformar datos técnicos en una decisión útil?</h2>
+          <p data-i18n="contact.text">Disponible para análisis de datos, SIG, automatización, recursos hídricos, investigación aplicada y soporte técnico remoto.</p>
+          <div class="contact-links">
+            <a id="contactLinkedin" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a id="contactGithub" target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+        <form id="contactForm" class="contact-form reveal delay-1" novalidate>
+          <div class="field"><label for="contactName" data-i18n="contact.name">Nombre</label><input id="contactName" name="name" autocomplete="name" required /></div>
+          <div class="field"><label for="contactEmail" data-i18n="contact.email">Email</label><input id="contactEmail" name="email" type="email" autocomplete="email" required /></div>
+          <div class="field"><label for="contactCompany" data-i18n="contact.company">Empresa / organización</label><input id="contactCompany" name="company" autocomplete="organization" /></div>
+          <div class="field"><label for="contactType" data-i18n="contact.type">Tipo de proyecto</label><select id="contactType" name="project_type"><option>Data Analytics</option><option>GIS</option><option>Water Resources</option><option>Applied AI</option><option>Environmental / Research</option><option>Other</option></select></div>
+          <div class="field full"><label for="contactMessage" data-i18n="contact.message">Mensaje</label><textarea id="contactMessage" name="message" rows="5" required></textarea></div>
+          <button class="btn primary full" type="submit" data-i18n="contact.send">Enviar mensaje</button>
+          <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-grid">
+      <div><strong>Willer Gianni Torrico Arispe</strong><p data-i18n="footer.tagline">Data · GIS · Water Resources · Applied AI</p></div>
+      <div class="footer-actions"><a href="/admin.html" rel="nofollow" data-i18n="footer.admin">Administrar portfolio</a><span>v1.0</span></div>
+    </div>
+  </footer>
+
+  <dialog class="project-dialog" id="projectDialog">
+    <button class="dialog-close" id="dialogClose" aria-label="Cerrar">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+
+  <noscript>Este portfolio necesita JavaScript para mostrar el contenido interactivo.</noscript>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

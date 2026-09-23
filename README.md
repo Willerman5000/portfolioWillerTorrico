@@ -1,0 +1,113 @@
+# Portfolio Willer Torrico - v1.0
+
+Portfolio profesional bilingüe (ES/EN) orientado a **Data Analytics, GIS, Water Resources, Applied AI y consultoría remota/internacional**.
+
+La actividad de **trading de criptomonedas** aparece de forma secundaria, como una práctica analítica adicional vinculada con análisis técnico, gestión de riesgo, visualización de datos, Pine Script e IA; no domina el posicionamiento profesional.
+
+## Incluye
+
+- Frontend responsive, accesible y bilingüe.
+- Dark / light mode.
+- Proyectos filtrables y modal de detalle.
+- Data Lab interactivo con información documentada de tomate, cebolla y ajo.
+- Mapa interactivo de experiencia territorial con Leaflet / OpenStreetMap.
+- Línea de tiempo profesional filtrable.
+- Formación y stack técnico.
+- Formulario de contacto.
+- CV ATS en español e inglés en PDF.
+- Panel privado `/admin.html` para agregar/editar trabajos, experiencia, perfil y revisar mensajes.
+- Backend Flask con API REST y caché ligera.
+- Supabase Auth + PostgreSQL + Storage, protegido con RLS.
+- SQL completo con tablas, políticas, bucket y datos iniciales.
+- Fallback local para que el sitio funcione incluso antes de configurar Supabase.
+
+## Estructura
+
+```text
+portfolio_willer_v1_0/
+├─ frontend/
+│  ├─ index.html
+│  ├─ admin.html
+│  ├─ css/
+│  ├─ js/
+│  ├─ data/seed.json
+│  └─ assets/
+│     ├─ img/
+│     └─ cv/
+├─ backend/
+│  ├─ app.py
+│  ├─ requirements.txt
+│  ├─ .env.example
+│  └─ data/seed.json
+├─ database/
+│  └─ schema.sql
+├─ docs/
+│  ├─ DEPLOY.md
+│  ├─ DATA_PROVENANCE.md
+│  └─ portfolio-concept.png
+├─ render.yaml
+└─ README.md
+```
+
+## Inicio rápido local
+
+```bash
+python -m venv .venv
+# Windows
+.venv\Scripts\activate
+# Linux/macOS
+# source .venv/bin/activate
+
+pip install -r backend/requirements.txt
+python backend/app.py
+```
+
+Abrir `http://localhost:10000`.
+
+Sin `SUPABASE_ANON_KEY` el frontend usa `seed.json`. El panel admin requiere Supabase configurado.
+
+## Configurar Supabase
+
+1. Abrir Supabase > SQL Editor.
+2. Ejecutar **todo** `database/schema.sql`.
+3. Ir a Authentication > Users y crear el usuario administrador.
+4. Copiar el UUID del usuario.
+5. Ejecutar:
+
+```sql
+insert into public.portfolio_admins(user_id)
+values ('PEGAR_UUID_AQUI')
+on conflict do nothing;
+```
+
+6. Copiar la **anon/public key** de Supabase.
+7. Crear `backend/.env` a partir de `backend/.env.example`.
+8. El URL ya está preparado para el proyecto indicado por el usuario:
+
+```env
+SUPABASE_URL=https://kzmczlhfmrhhxopzpmze.supabase.co
+SUPABASE_ANON_KEY=...
+```
+
+No se necesita `service_role` para el funcionamiento normal. El backend usa el token del usuario autenticado y las políticas RLS de Supabase.
+
+## CV ATS
+
+- `frontend/assets/cv/Willer_Torrico_CV_ATS_ES.pdf`
+- `frontend/assets/cv/Willer_Torrico_ATS_Resume_EN.pdf`
+
+Son documentos de una sola columna, sin foto, sin barras de habilidades y sin datos personales innecesarios.
+
+## Tesis / mapas
+
+La arquitectura v1.0 ya acepta GeoJSON, capas SIG y nuevos `case_studies`. Los archivos proporcionados de la maestría no contienen de forma identificable la tesis final ni sus mapas finales, por lo que **v1.0 no inventa resultados ni mapas de tesis**. El mapa actual representa experiencia territorial documentada en el CV.
+
+Cuando se incorpore el PDF final de la tesis o SHP/GeoJSON originales, el módulo puede poblarse sin cambiar la arquitectura.
+
+## Privacidad
+
+La web pública omite documento de identidad, domicilio exacto, estado civil, fecha de nacimiento y teléfonos personales presentes en CVs antiguos. El contacto público usa email, LinkedIn y formulario.
+
+## Datos y afirmaciones
+
+La redacción inicial es deliberadamente conservadora. Donde los CVs fuente tenían diferencias (por ejemplo, institución financiera asociada a una experiencia), v1.0 prioriza el CV detallado en español y evita afirmaciones no respaldadas por esa fuente.

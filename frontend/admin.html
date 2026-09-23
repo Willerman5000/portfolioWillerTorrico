@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Admin · Portfolio Willer Torrico</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin-body">
+  <main class="admin-main">
+    <section class="admin-login" id="loginPanel">
+      <div class="admin-card login-card">
+        <a href="/" class="brand">WT</a>
+        <span class="section-kicker">Portfolio CMS · v1.0</span>
+        <h1>Administrar contenido</h1>
+        <p>Ingresá con el usuario creado en Supabase Auth y autorizado en <code>portfolio_admins</code>.</p>
+        <form id="loginForm">
+          <div class="field"><label for="adminEmail">Email</label><input id="adminEmail" name="email" type="email" required autocomplete="username" /></div>
+          <div class="field"><label for="adminPassword">Contraseña</label><input id="adminPassword" name="password" type="password" required autocomplete="current-password" /></div>
+          <button class="btn primary full" type="submit">Ingresar</button>
+          <p id="loginStatus" class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="admin-app" id="adminApp" hidden>
+      <header class="admin-header">
+        <div><a href="/" class="brand">WT</a><div><strong>Portfolio CMS</strong><small id="adminIdentity"></small></div></div>
+        <div class="admin-header-actions"><a class="btn secondary" href="/" target="_blank">Ver portfolio ↗</a><button class="btn secondary" id="logoutBtn">Salir</button></div>
+      </header>
+
+      <div class="admin-shell">
+        <aside class="admin-sidebar">
+          <button class="admin-tab active" data-tab="projects">Proyectos / trabajos</button>
+          <button class="admin-tab" data-tab="experience">Experiencia</button>
+          <button class="admin-tab" data-tab="profile">Perfil</button>
+          <button class="admin-tab" data-tab="messages">Mensajes</button>
+        </aside>
+
+        <div class="admin-content">
+          <section class="admin-section active" data-panel="projects">
+            <div class="admin-title-row"><div><span class="section-kicker">Contenido</span><h2>Proyectos / trabajos</h2></div><button class="btn primary" id="newProjectBtn">+ Nuevo trabajo</button></div>
+            <div id="projectsAdminList" class="admin-list"></div>
+          </section>
+
+          <section class="admin-section" data-panel="experience">
+            <div class="admin-title-row"><div><span class="section-kicker">Trayectoria</span><h2>Experiencia profesional</h2></div><button class="btn primary" id="newExperienceBtn">+ Nueva experiencia</button></div>
+            <div id="experienceAdminList" class="admin-list"></div>
+          </section>
+
+          <section class="admin-section" data-panel="profile">
+            <div class="admin-title-row"><div><span class="section-kicker">Identidad</span><h2>Perfil principal</h2></div></div>
+            <form id="profileForm" class="admin-form"></form>
+          </section>
+
+          <section class="admin-section" data-panel="messages">
+            <div class="admin-title-row"><div><span class="section-kicker">Contacto</span><h2>Mensajes recibidos</h2></div></div>
+            <div id="messagesAdminList" class="admin-list"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="editorDialog" class="admin-dialog">
+    <button class="dialog-close" id="editorClose" aria-label="Cerrar">×</button>
+    <form id="editorForm" class="admin-form dialog-form"></form>
+  </dialog>
+
+  <script src="/js/admin.js" defer></script>
+</body>
+</html>
