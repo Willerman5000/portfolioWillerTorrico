@@ -51,6 +51,38 @@ const esc = (value='') => String(value).replace(/[&<>'"]/g, ch => ({'&':'&amp;',
 const tr = key => t[state.lang]?.[key] ?? t.es[key] ?? key;
 const localized = (obj, key) => obj?.[`${key}_${state.lang}`] || obj?.[`${key}_es`] || obj?.[key] || '';
 
+function cleanMediaUrl(value=''){
+  if(typeof value !== 'string') return '';
+  const url = value.trim();
+  if(!url) return '';
+  if(url.startsWith('/assets/')) return url.slice(1);
+  if(url.startsWith('assets/')) return url;
+  if(/^https?:\/\//i.test(url) || url.startsWith('data:image/')) return url;
+  return '';
+}
+
+function mergeThesisMaps(localMaps=[], remoteMaps=[]){
+  // Thesis illustrations are versioned static assets shipped with the portfolio.
+  // Supabase may still contain stale URLs from an older deploy; keep the local URL
+  // whenever the same map exists locally, while still allowing remote text updates.
+  const out=[];
+  const remote=[...(remoteMaps||[])];
+  (localMaps||[]).forEach((localMap, index)=>{
+    const matchIndex=remote.findIndex(r =>
+      (r?.title_es && localMap?.title_es && r.title_es===localMap.title_es) ||
+      (r?.title_en && localMap?.title_en && r.title_en===localMap.title_en)
+    );
+    const match=matchIndex>=0 ? remote.splice(matchIndex,1)[0] : (remote[index] || {});
+    if(matchIndex<0 && remote[index]) remote.splice(index,1);
+    out.push({...localMap, ...match, url: cleanMediaUrl(localMap?.url) || cleanMediaUrl(match?.url)});
+  });
+  remote.forEach(r=>{
+    const url=cleanMediaUrl(r?.url);
+    if(url) out.push({...r,url});
+  });
+  return out;
+}
+
 function mergeCaseStudies(localRows=[], remoteRows=[]){
   const byType = new Map();
   (localRows || []).forEach(row => { if(row?.type) byType.set(row.type, row); });
@@ -59,21 +91,64 @@ function mergeCaseStudies(localRows=[], remoteRows=[]){
     const previous = byType.get(row.type) || {};
     const remoteData = row.data_json && typeof row.data_json === 'object' ? row.data_json : null;
     const previousData = previous.data_json && typeof previous.data_json === 'object' ? previous.data_json : {};
-    byType.set(row.type, { ...previous, ...row, data_json: remoteData ? { ...previousData, ...remoteData } : previousData });
+    const mergedData = remoteData ? { ...previousData, ...remoteData } : previousData;
+    if(row.type === 'thesis') mergedData.maps = mergeThesisMaps(previousData.maps || [], remoteData?.maps || []);
+    byType.set(row.type, { ...previous, ...row, data_json: mergedData });
   });
   return [...byType.values()];
 }
 
 function mergeBootstrap(localData={}, remoteData={}){
   const out = { ...localData, ...remoteData };
-  out.profile = { ...(localData.profile || {}), ...(remoteData.profile || {}) };
+  const localProfile = localData.profile || {};
+  const remoteProfile = remoteData.profile || {};
+  out.profile = { ...localProfile, ...remoteProfile };
+
+  // Media stability rule: the bundled portrait is the canonical fallback and must
+  // never be replaced by an empty/stale database path. A valid absolute remote
+  // image remains allowed (for future Supabase Storage uploads).
+  const localPhoto = cleanMediaUrl(localProfile.photo_url) || 'assets/img/willer-profile-formal.jpg';
+  const remotePhoto = cleanMediaUrl(remoteProfile.photo_url);
+  const remoteIsExternal = /^https?:\/\//i.test(remotePhoto) || remotePhoto.startsWith('data:image/');
+  out.profile.photo_url = remoteIsExternal ? remotePhoto : localPhoto;
+  out.profile.cv_es_url = cleanMediaUrl(localProfile.cv_es_url) || localProfile.cv_es_url || remoteProfile.cv_es_url;
+  out.profile.cv_en_url = cleanMediaUrl(localProfile.cv_en_url) || localProfile.cv_en_url || remoteProfile.cv_en_url;
+
   for(const key of ['skills','education','experiences','projects']){
     const remoteRows = remoteData?.[key];
     out[key] = Array.isArray(remoteRows) && remoteRows.length ? remoteRows : (localData?.[key] || []);
   }
   out.case_studies = mergeCaseStudies(localData.case_studies || [], remoteData.case_studies || []);
-  out._meta = { ...(localData._meta || {}), ...(remoteData._meta || {}), localFallbackMerged: true };
+  out._meta = { ...(localData._meta || {}), ...(remoteData._meta || {}), localFallbackMerged: true, mediaStable: true };
   return out;
+}
+
+function setStableImage(img, primary, fallbacks=[]){
+  if(!img) return;
+  const candidates=[primary,...fallbacks]
+    .map(cleanMediaUrl)
+    .filter(Boolean)
+    .filter((x,i,a)=>a.indexOf(x)===i);
+  let index=0;
+  const loadNext=()=>{
+    if(index>=candidates.length){
+      img.classList.add('media-error');
+      img.removeAttribute('src');
+      return;
+    }
+    const candidate=candidates[index++];
+    img.classList.remove('media-error');
+    if(img.getAttribute('src') !== candidate) img.setAttribute('src', candidate);
+  };
+  img.onerror=loadNext;
+  loadNext();
+}
+
+function stabilizeRenderedImages(root=document){
+  root.querySelectorAll('img[data-media-fallback]').forEach(img=>{
+    const fallbacks=(img.dataset.mediaFallback||'').split('|').filter(Boolean);
+    setStableImage(img,img.getAttribute('src')||'',fallbacks);
+  });
 }
 
 async function loadData(){
@@ -137,17 +212,11 @@ function renderProfile(){
   setText('cryptoNote', localized(p,'crypto_note'));
   const photo = document.getElementById('profilePhoto');
   if(photo){
-    const formalPhoto = '/assets/img/willer-profile-formal.jpg';
-    const sourcePhoto = '/assets/img/willer-profile-source.jpg';
-    photo.onerror = () => {
-      const current = photo.getAttribute('src') || '';
-      if(!current.includes('willer-profile-formal.jpg')){
-        photo.src = formalPhoto;
-      }else if(!current.includes('willer-profile-source.jpg')){
-        photo.src = sourcePhoto;
-      }
-    };
-    photo.src = (p.photo_url || formalPhoto).trim() || formalPhoto;
+    setStableImage(
+      photo,
+      cleanMediaUrl(p.photo_url) || 'assets/img/willer-profile-formal.jpg',
+      ['assets/img/willer-profile-formal.jpg','assets/img/willer-profile-source.jpg']
+    );
   }
   const cv = document.getElementById('cvPrimary'); cv.href = state.lang === 'en' ? p.cv_en_url : p.cv_es_url;
   const links = [
@@ -274,8 +343,8 @@ function renderThesis(){
             </div>`).join('')}</div>
           <p class="thesis-note">${tr('thesis.rounding')}</p>
           <div class="thesis-static-charts">
-            <figure><img src="/assets/thesis/area_distribution.png" alt="${state.lang==='es'?'Distribución de clases de infiltrabilidad':'Distribution of infiltrability classes'}" loading="lazy"><figcaption>${state.lang==='es'?'Superficie municipal por clase de infiltrabilidad':'Municipal area by infiltrability class'}</figcaption></figure>
-            <figure><img src="/assets/thesis/basic_infiltration_ranges.png" alt="${state.lang==='es'?'Rangos de infiltración básica':'Basic infiltration ranges'}" loading="lazy"><figcaption>${state.lang==='es'?'Rangos documentados de infiltración básica':'Documented basic-infiltration ranges'}</figcaption></figure>
+            <figure><img src="assets/thesis/area_distribution.png" data-media-fallback="assets/thesis/area_distribution.png" alt="${state.lang==='es'?'Distribución de clases de infiltrabilidad':'Distribution of infiltrability classes'}" loading="lazy"><figcaption>${state.lang==='es'?'Superficie municipal por clase de infiltrabilidad':'Municipal area by infiltrability class'}</figcaption></figure>
+            <figure><img src="assets/thesis/basic_infiltration_ranges.png" data-media-fallback="assets/thesis/basic_infiltration_ranges.png" alt="${state.lang==='es'?'Rangos de infiltración básica':'Basic infiltration ranges'}" loading="lazy"><figcaption>${state.lang==='es'?'Rangos documentados de infiltración básica':'Documented basic-infiltration ranges'}</figcaption></figure>
           </div>
         </div>
         <div class="thesis-class-cards">${classes.map(c=>`
@@ -303,8 +372,8 @@ function renderThesis(){
               <strong>${esc(c.max_irrigation)}</strong>
             </div>`).join('')}</div>
           <div class="thesis-static-charts">
-            <figure><img src="/assets/thesis/irrigation_time_by_class.png" alt="${state.lang==='es'?'Tiempo máximo de riego por clase':'Maximum irrigation time by class'}" loading="lazy"><figcaption>${state.lang==='es'?'Tiempo máximo de riego documentado':'Documented maximum irrigation time'}</figcaption></figure>
-            <figure><img src="/assets/thesis/accumulated_infiltration_5h.png" alt="${state.lang==='es'?'Infiltración acumulada a cinco horas':'Five-hour accumulated infiltration'}" loading="lazy"><figcaption>${state.lang==='es'?'Infiltración acumulada después de 5 horas':'Accumulated infiltration after 5 hours'}</figcaption></figure>
+            <figure><img src="assets/thesis/irrigation_time_by_class.png" data-media-fallback="assets/thesis/irrigation_time_by_class.png" alt="${state.lang==='es'?'Tiempo máximo de riego por clase':'Maximum irrigation time by class'}" loading="lazy"><figcaption>${state.lang==='es'?'Tiempo máximo de riego documentado':'Documented maximum irrigation time'}</figcaption></figure>
+            <figure><img src="assets/thesis/accumulated_infiltration_5h.png" data-media-fallback="assets/thesis/accumulated_infiltration_5h.png" alt="${state.lang==='es'?'Infiltración acumulada a cinco horas':'Five-hour accumulated infiltration'}" loading="lazy"><figcaption>${state.lang==='es'?'Infiltración acumulada después de 5 horas':'Accumulated infiltration after 5 hours'}</figcaption></figure>
           </div>
         </div>
         <div class="thesis-findings">
@@ -334,7 +403,7 @@ function renderThesis(){
     content.innerHTML=`
       <div class="thesis-map-gallery">${(d.maps||[]).map((m,i)=>`
         <button class="thesis-map-card" type="button" data-thesis-map="${esc(m.url)}" data-thesis-title="${esc(localized(m,'title'))}" data-thesis-caption="${esc(localized(m,'caption'))}">
-          <img src="${esc(m.url)}" alt="${esc(localized(m,'title'))}" loading="lazy">
+          <img src="${esc(cleanMediaUrl(m.url))}" data-media-fallback="${esc(cleanMediaUrl(m.url))}" alt="${esc(localized(m,'title'))}" loading="lazy">
           <span><b>${esc(localized(m,'title'))}</b><small>${esc(localized(m,'caption'))}</small></span>
         </button>`).join('')}</div>`;
     document.querySelectorAll('[data-thesis-map]').forEach(btn=>btn.addEventListener('click',()=>openThesisMap(btn)));
@@ -350,6 +419,7 @@ function renderThesis(){
         </aside>
       </div>`;
   }
+  stabilizeRenderedImages(content);
 }
 
 function openThesisMap(btn){
@@ -357,9 +427,10 @@ function openThesisMap(btn){
   document.getElementById('dialogContent').innerHTML=`<div class="dialog-inner thesis-map-dialog">
     <span class="section-kicker">${tr('thesis.source')}</span>
     <h2>${esc(btn.dataset.thesisTitle||'')}</h2>
-    <img src="${esc(btn.dataset.thesisMap||'')}" alt="${esc(btn.dataset.thesisTitle||'')}">
+    <img src="${esc(cleanMediaUrl(btn.dataset.thesisMap||''))}" data-media-fallback="${esc(cleanMediaUrl(btn.dataset.thesisMap||''))}" alt="${esc(btn.dataset.thesisTitle||'')}">
     <p>${esc(btn.dataset.thesisCaption||'')}</p>
   </div>`;
+  stabilizeRenderedImages(document.getElementById('dialogContent'));
   if(typeof dlg.showModal==='function') dlg.showModal(); else dlg.setAttribute('open','');
 }
 

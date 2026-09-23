@@ -225,9 +225,20 @@ def contact_rate_allowed(ip: str) -> bool:
         return True
 
 
+@app.after_request
+def static_cache_policy(response):
+    # HTML/JS/CSS must refresh immediately after a deploy. Images can remain cached.
+    path = request.path.lower()
+    if path in {"/", "/index.html", "/admin.html"} or path.endswith((".js", ".css", ".json")):
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+    return response
+
+
 @app.get("/api/health")
 def health():
-    return jsonify({"ok": True, "version": "1.1.1", "supabase_configured": configured()})
+    return jsonify({"ok": True, "version": "1.1.3", "supabase_configured": configured()})
 
 
 @app.get("/api/public/bootstrap")
