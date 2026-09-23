@@ -6,129 +6,746 @@
     "eyebrow_en": "International consultant · Available for remote work",
     "headline_es": "Analítica de Datos · SIG · Recursos Hídricos · IA Aplicada",
     "headline_en": "Data Analytics · GIS · Water Resources · Applied AI",
-    "summary_es": "MSc. en Gestión Integral de Recursos Hídricos e Ingeniero Agrónomo con experiencia en análisis de datos, SIG, evaluación ambiental, investigación aplicada y sistemas de riego. Integro Python, SQL, QGIS, ArcGIS y herramientas de IA para transformar información técnica y geoespacial en decisiones claras.",
-    "summary_en": "MSc. in Integrated Water Resources Management and Agricultural Engineer with experience in data analytics, GIS, environmental assessment, applied research and irrigation systems. I combine Python, SQL, QGIS, ArcGIS and AI tools to turn technical and geospatial information into clear decisions.",
+    "summary_es": "MSc. en Gestión Integral de Recursos Hídricos e Ingeniero Agrónomo con experiencia en análisis de datos, SIG, suelos, riego, evaluación ambiental e investigación aplicada. Integro análisis cuantitativo, cartografía, Python, SQL, QGIS, ArcGIS y herramientas de IA para transformar información técnica y geoespacial en decisiones claras.",
+    "summary_en": "MSc. in Integrated Water Resources Management and Agricultural Engineer with experience in data analytics, GIS, soils, irrigation, environmental assessment and applied research. I combine quantitative analysis, mapping, Python, SQL, QGIS, ArcGIS and AI tools to turn technical and geospatial information into clear decisions.",
     "location_es": "Buenos Aires, Argentina · Remoto / Internacional",
     "location_en": "Buenos Aires, Argentina · Remote / International",
     "email": "wtorrico@gmail.com",
     "linkedin_url": "https://www.linkedin.com/in/willer-gianni-torrico-arispe",
-    "github_url": "https://github.com/Willer5000",
+    "github_url": "https://github.com/willtvbox5000-wq",
     "cv_es_url": "/assets/cv/Willer_Torrico_CV_ATS_ES.pdf",
     "cv_en_url": "/assets/cv/Willer_Torrico_ATS_Resume_EN.pdf",
-    "photo_url": "/assets/img/willer-profile-source.jpg",
+    "photo_url": "/assets/img/willer-profile-formal.jpg",
     "availability": true,
     "crypto_note_es": "Actividad complementaria: trader de criptomonedas con enfoque en análisis técnico, gestión de riesgo y automatización de análisis.",
     "crypto_note_en": "Additional activity: cryptocurrency trader focused on technical analysis, risk management and analytical automation."
   },
   "skills": [
-    {"id":"s1","category":"data","name":"Python","detail":"pandas · NumPy · Matplotlib · Plotly","sort_order":1},
-    {"id":"s2","category":"data","name":"SQL","detail":"consultas · modelado · PostgreSQL / Supabase","sort_order":2},
-    {"id":"s3","category":"data","name":"R / SPSS","detail":"análisis estadístico e investigación","sort_order":3},
-    {"id":"s4","category":"data","name":"Power BI","detail":"dashboards y comunicación de datos","sort_order":4},
-    {"id":"s5","category":"gis","name":"QGIS","detail":"análisis espacial · cartografía · geoprocesos","sort_order":5},
-    {"id":"s6","category":"gis","name":"ArcGIS","detail":"SIG · geodatabases · evaluación territorial","sort_order":6},
-    {"id":"s7","category":"gis","name":"Google Earth Engine","detail":"teledetección · series satelitales","sort_order":7},
-    {"id":"s8","category":"gis","name":"GDAL / OGR / PDAL","detail":"procesamiento geoespacial","sort_order":8},
-    {"id":"s9","category":"water","name":"Recursos hídricos","detail":"gestión integral · agrohidrología · riego","sort_order":9},
-    {"id":"s10","category":"environment","name":"Evaluación ambiental","detail":"EIA · riesgo · análisis socioambiental","sort_order":10},
-    {"id":"s11","category":"ai","name":"IA aplicada","detail":"LLM · automatización · apoyo a decisiones · prompting técnico","sort_order":11},
-    {"id":"s12","category":"dev","name":"Flask / Supabase / Git","detail":"aplicaciones analíticas y APIs","sort_order":12},
-    {"id":"s13","category":"markets","name":"Trading de criptomonedas","detail":"análisis técnico · gestión de riesgo · Pine Script","sort_order":13}
+    {
+      "id": "s1",
+      "category": "data",
+      "name": "Python",
+      "detail": "pandas · NumPy · Matplotlib · Plotly",
+      "sort_order": 1
+    },
+    {
+      "id": "s2",
+      "category": "data",
+      "name": "SQL",
+      "detail": "consultas · modelado · PostgreSQL / Supabase",
+      "sort_order": 2
+    },
+    {
+      "id": "s3",
+      "category": "data",
+      "name": "R / SPSS",
+      "detail": "análisis estadístico e investigación",
+      "sort_order": 3
+    },
+    {
+      "id": "s4",
+      "category": "data",
+      "name": "Power BI",
+      "detail": "dashboards y comunicación de datos",
+      "sort_order": 4
+    },
+    {
+      "id": "s5",
+      "category": "gis",
+      "name": "QGIS",
+      "detail": "análisis espacial · cartografía · geoprocesos",
+      "sort_order": 5
+    },
+    {
+      "id": "s6",
+      "category": "gis",
+      "name": "ArcGIS",
+      "detail": "SIG · geodatabases · evaluación territorial",
+      "sort_order": 6
+    },
+    {
+      "id": "s7",
+      "category": "gis",
+      "name": "Google Earth Engine",
+      "detail": "teledetección · series satelitales",
+      "sort_order": 7
+    },
+    {
+      "id": "s8",
+      "category": "gis",
+      "name": "GDAL / OGR / PDAL",
+      "detail": "procesamiento geoespacial",
+      "sort_order": 8
+    },
+    {
+      "id": "s9",
+      "category": "water",
+      "name": "Recursos hídricos",
+      "detail": "gestión integral · agrohidrología · riego",
+      "sort_order": 9
+    },
+    {
+      "id": "s10",
+      "category": "environment",
+      "name": "Evaluación ambiental",
+      "detail": "EIA · riesgo · análisis socioambiental",
+      "sort_order": 10
+    },
+    {
+      "id": "s11",
+      "category": "ai",
+      "name": "IA aplicada",
+      "detail": "LLM · automatización · apoyo a decisiones · prompting técnico",
+      "sort_order": 11
+    },
+    {
+      "id": "s12",
+      "category": "dev",
+      "name": "Flask / Supabase / Git",
+      "detail": "aplicaciones analíticas y APIs",
+      "sort_order": 12
+    },
+    {
+      "id": "s13",
+      "category": "markets",
+      "name": "Trading de criptomonedas",
+      "detail": "análisis técnico · gestión de riesgo · Pine Script",
+      "sort_order": 13
+    }
   ],
   "education": [
-    {"id":"e1","degree_es":"MSc. Gestión Integral de Recursos Hídricos","degree_en":"MSc. Integrated Water Resources Management","institution":"Universidad Mayor de San Simón · Centro AGUA","start_year":2017,"end_year":2020,"sort_order":1},
-    {"id":"e2","degree_es":"Ingeniero Agrónomo","degree_en":"Agricultural Engineer","institution":"Universidad Mayor de San Simón","start_year":2005,"end_year":2011,"sort_order":2},
-    {"id":"e3","degree_es":"IBM Data Scientist Professional Certificate","degree_en":"IBM Data Scientist Professional Certificate","institution":"IBM","start_year":2022,"end_year":2023,"sort_order":3},
-    {"id":"e4","degree_es":"Diplomado en Sistemas de Información Geográfica y Percepción Remota","degree_en":"Diploma in Geographic Information Systems and Remote Sensing","institution":"Universidad Mayor de San Simón","start_year":2013,"end_year":2013,"sort_order":4},
-    {"id":"e5","degree_es":"Diplomado en Diseño de Ingeniería Hidráulica","degree_en":"Diploma in Hydraulic Engineering Design","institution":"Universidad San Sebastián","start_year":2014,"end_year":2014,"sort_order":5},
-    {"id":"e6","degree_es":"Diplomado en Gestión Ambiental","degree_en":"Diploma in Environmental Management","institution":"Universidad Juan Misael Saracho","start_year":2012,"end_year":2012,"sort_order":6},
-    {"id":"e7","degree_es":"Diplomado en Educación Superior con tecnologías emergentes e IA","degree_en":"Diploma in Higher Education with Emerging Technologies and AI","institution":"Universidad Mayor de San Andrés","start_year":2024,"end_year":2025,"sort_order":7}
+    {
+      "id": "e1",
+      "degree_es": "MSc. Gestión Integral de Recursos Hídricos",
+      "degree_en": "MSc. Integrated Water Resources Management",
+      "institution": "Universidad Mayor de San Simón · Centro AGUA",
+      "start_year": 2017,
+      "end_year": 2020,
+      "sort_order": 1
+    },
+    {
+      "id": "e2",
+      "degree_es": "Ingeniero Agrónomo",
+      "degree_en": "Agricultural Engineer",
+      "institution": "Universidad Mayor de San Simón",
+      "start_year": 2005,
+      "end_year": 2011,
+      "sort_order": 2
+    },
+    {
+      "id": "e3",
+      "degree_es": "IBM Data Scientist Professional Certificate",
+      "degree_en": "IBM Data Scientist Professional Certificate",
+      "institution": "IBM",
+      "start_year": 2022,
+      "end_year": 2023,
+      "sort_order": 3
+    },
+    {
+      "id": "e4",
+      "degree_es": "Diplomado en Sistemas de Información Geográfica y Percepción Remota",
+      "degree_en": "Diploma in Geographic Information Systems and Remote Sensing",
+      "institution": "Universidad Mayor de San Simón",
+      "start_year": 2013,
+      "end_year": 2013,
+      "sort_order": 4
+    },
+    {
+      "id": "e5",
+      "degree_es": "Diplomado en Diseño de Ingeniería Hidráulica",
+      "degree_en": "Diploma in Hydraulic Engineering Design",
+      "institution": "Universidad San Sebastián",
+      "start_year": 2014,
+      "end_year": 2014,
+      "sort_order": 5
+    },
+    {
+      "id": "e6",
+      "degree_es": "Diplomado en Gestión Ambiental",
+      "degree_en": "Diploma in Environmental Management",
+      "institution": "Universidad Juan Misael Saracho",
+      "start_year": 2012,
+      "end_year": 2012,
+      "sort_order": 6
+    },
+    {
+      "id": "e7",
+      "degree_es": "Diplomado en Educación Superior con tecnologías emergentes e IA",
+      "degree_en": "Diploma in Higher Education with Emerging Technologies and AI",
+      "institution": "Universidad Mayor de San Andrés",
+      "start_year": 2024,
+      "end_year": 2025,
+      "sort_order": 7
+    }
   ],
   "experiences": [
     {
-      "id":"x2024","organization":"greenLAC / Eco.Business Fund","role_es":"Consultor","role_en":"Consultant","location":"Bolivia · proyecto regional","start_date":"2024-05-01","end_date":"2024-07-31","category":"data,gis,environment","summary_es":"Colaboración en la actualización de estudios de deforestación, recopilando y estructurando información sobre riesgo de deforestación asociado a actividades agropecuarias en Bolivia.","summary_en":"Contributed to the update of deforestation studies by collecting and structuring information on deforestation risk associated with agricultural activities in Bolivia.","sort_order":1
+      "id": "x2024",
+      "organization": "greenLAC / Eco.Business Fund",
+      "role_es": "Consultor",
+      "role_en": "Consultant",
+      "location": "Bolivia · proyecto regional",
+      "start_date": "2024-05-01",
+      "end_date": "2024-07-31",
+      "category": "data,gis,environment",
+      "summary_es": "Colaboración en la actualización de estudios de deforestación, recopilando y estructurando información sobre riesgo de deforestación asociado a actividades agropecuarias en Bolivia.",
+      "summary_en": "Contributed to the update of deforestation studies by collecting and structuring information on deforestation risk associated with agricultural activities in Bolivia.",
+      "sort_order": 1
     },
     {
-      "id":"x2019","organization":"Administradora Boliviana de Carreteras / BID","role_es":"Consultor","role_en":"Consultant","location":"Bolivia","start_date":"2019-10-01","end_date":"2020-03-31","category":"gis,data,infrastructure","summary_es":"Levantamiento de video inventario básico de los principales corredores de la Red Vial Fundamental de Bolivia, con cobertura aproximada de 10.000 km de carreteras.","summary_en":"Supported a basic video inventory survey of Bolivia's main Fundamental Road Network corridors, covering approximately 10,000 km of roads.","sort_order":2
+      "id": "x2019",
+      "organization": "Administradora Boliviana de Carreteras / BID",
+      "role_es": "Consultor",
+      "role_en": "Consultant",
+      "location": "Bolivia",
+      "start_date": "2019-10-01",
+      "end_date": "2020-03-31",
+      "category": "gis,data,infrastructure",
+      "summary_es": "Levantamiento de video inventario básico de los principales corredores de la Red Vial Fundamental de Bolivia, con cobertura aproximada de 10.000 km de carreteras.",
+      "summary_en": "Supported a basic video inventory survey of Bolivia's main Fundamental Road Network corridors, covering approximately 10,000 km of roads.",
+      "sort_order": 2
     },
     {
-      "id":"x2018","organization":"Chirripó Consultores / greenLAC","role_es":"Consultor","role_en":"Consultant","location":"Bolivia","start_date":"2018-02-01","end_date":"2018-06-30","category":"gis,data,environment","summary_es":"Apoyo al estudio de análisis de riesgo de deforestación por actividades agropecuarias y medidas de mitigación en Bolivia.","summary_en":"Supported a study on deforestation risk from agricultural activities and mitigation measures in Bolivia.","sort_order":3
+      "id": "x2018",
+      "organization": "Chirripó Consultores / greenLAC",
+      "role_es": "Consultor",
+      "role_en": "Consultant",
+      "location": "Bolivia",
+      "start_date": "2018-02-01",
+      "end_date": "2018-06-30",
+      "category": "gis,data,environment",
+      "summary_es": "Apoyo al estudio de análisis de riesgo de deforestación por actividades agropecuarias y medidas de mitigación en Bolivia.",
+      "summary_en": "Supported a study on deforestation risk from agricultural activities and mitigation measures in Bolivia.",
+      "sort_order": 3
     },
     {
-      "id":"x2017","organization":"ENDE - Guaracachi","role_es":"Asistente Técnico Socioambiental","role_en":"Socio-Environmental Technical Assistant","location":"Santa Cruz, Bolivia","start_date":"2017-02-01","end_date":"2017-07-31","category":"gis,environment","summary_es":"Análisis de desarrollo productivo y problemas socioambientales, levantamiento geográfico con SIG y provisión de información territorial para el proyecto.","summary_en":"Analyzed productive development and socio-environmental issues, performed GIS-based geographic surveys and provided territorial information for the project.","sort_order":4
+      "id": "x2017",
+      "organization": "ENDE - Guaracachi",
+      "role_es": "Asistente Técnico Socioambiental",
+      "role_en": "Socio-Environmental Technical Assistant",
+      "location": "Santa Cruz, Bolivia",
+      "start_date": "2017-02-01",
+      "end_date": "2017-07-31",
+      "category": "gis,environment",
+      "summary_es": "Análisis de desarrollo productivo y problemas socioambientales, levantamiento geográfico con SIG y provisión de información territorial para el proyecto.",
+      "summary_en": "Analyzed productive development and socio-environmental issues, performed GIS-based geographic surveys and provided territorial information for the project.",
+      "sort_order": 4
     },
     {
-      "id":"x2016b","organization":"ENDE Corporación · Proyecto Hidroeléctrico Rositas","role_es":"Profesional en Gestión Social, SIG y Medio Ambiente","role_en":"Social Management, GIS and Environmental Professional","location":"Abapó, Santa Cruz, Bolivia","start_date":"2016-10-01","end_date":"2016-12-31","category":"gis,water,environment","summary_es":"Levantamiento geográfico de zonas del proyecto, análisis productivo y socioambiental y apoyo a la gestión de información territorial.","summary_en":"Mapped project areas, analyzed productive and socio-environmental conditions, and supported territorial information management.","sort_order":5
+      "id": "x2016b",
+      "organization": "ENDE Corporación · Proyecto Hidroeléctrico Rositas",
+      "role_es": "Profesional en Gestión Social, SIG y Medio Ambiente",
+      "role_en": "Social Management, GIS and Environmental Professional",
+      "location": "Abapó, Santa Cruz, Bolivia",
+      "start_date": "2016-10-01",
+      "end_date": "2016-12-31",
+      "category": "gis,water,environment",
+      "summary_es": "Levantamiento geográfico de zonas del proyecto, análisis productivo y socioambiental y apoyo a la gestión de información territorial.",
+      "summary_en": "Mapped project areas, analyzed productive and socio-environmental conditions, and supported territorial information management.",
+      "sort_order": 5
     },
     {
-      "id":"x2015b","organization":"INIAF · Programa Nacional de Hortalizas","role_es":"Técnico en sistematización de información y manejo de paquetes estadísticos","role_en":"Information Systematization and Statistical Software Technician","location":"Sipe Sipe, Cochabamba, Bolivia","start_date":"2015-09-01","end_date":"2016-09-30","category":"data,research,agriculture","summary_es":"Sistematización, análisis e interpretación de información del Programa Nacional de Hortalizas; elaboración de síntesis técnicas y apoyo a investigación en tomate, cebolla y ajo.","summary_en":"Systematized, analyzed and interpreted information from the National Horticulture Program; prepared technical syntheses and supported tomato, onion and garlic research.","sort_order":6
+      "id": "x2015b",
+      "organization": "INIAF · Programa Nacional de Hortalizas",
+      "role_es": "Técnico en sistematización de información y manejo de paquetes estadísticos",
+      "role_en": "Information Systematization and Statistical Software Technician",
+      "location": "Sipe Sipe, Cochabamba, Bolivia",
+      "start_date": "2015-09-01",
+      "end_date": "2016-09-30",
+      "category": "data,research,agriculture",
+      "summary_es": "Sistematización, análisis e interpretación de información del Programa Nacional de Hortalizas; elaboración de síntesis técnicas y apoyo a investigación en tomate, cebolla y ajo.",
+      "summary_en": "Systematized, analyzed and interpreted information from the National Horticulture Program; prepared technical syntheses and supported tomato, onion and garlic research.",
+      "sort_order": 6
     },
     {
-      "id":"x2015a","organization":"Servicio de Ingeniería Multidisciplinaria","role_es":"Consultor en Evaluación de Impacto Ambiental y Riego","role_en":"Environmental Impact Assessment and Irrigation Consultant","location":"Cochabamba, Bolivia","start_date":"2015-01-01","end_date":"2015-09-30","category":"water,gis,environment","summary_es":"Elaboración de estudios de evaluación de impacto ambiental, SIG y diseños agronómicos de sistemas de riego.","summary_en":"Prepared environmental impact assessment studies, GIS analyses and agronomic designs for irrigation systems.","sort_order":7
+      "id": "x2015a",
+      "organization": "Servicio de Ingeniería Multidisciplinaria",
+      "role_es": "Consultor en Evaluación de Impacto Ambiental y Riego",
+      "role_en": "Environmental Impact Assessment and Irrigation Consultant",
+      "location": "Cochabamba, Bolivia",
+      "start_date": "2015-01-01",
+      "end_date": "2015-09-30",
+      "category": "water,gis,environment",
+      "summary_es": "Elaboración de estudios de evaluación de impacto ambiental, SIG y diseños agronómicos de sistemas de riego.",
+      "summary_en": "Prepared environmental impact assessment studies, GIS analyses and agronomic designs for irrigation systems.",
+      "sort_order": 7
     },
     {
-      "id":"x2014","organization":"Gobierno Autónomo Departamental de Chuquisaca","role_es":"Responsable de Gestión Ambiental y Técnico SIG","role_en":"Environmental Management Coordinator and GIS Technician","location":"Sucre, Bolivia","start_date":"2014-05-01","end_date":"2014-12-31","category":"gis,environment","summary_es":"Inspecciones ambientales, revisión documental y elaboración de cartografía SIG para evaluación ambiental, forestación y reforestación.","summary_en":"Performed environmental inspections, document review and GIS mapping for environmental assessment, afforestation and reforestation.","sort_order":8
+      "id": "x2014",
+      "organization": "Gobierno Autónomo Departamental de Chuquisaca",
+      "role_es": "Responsable de Gestión Ambiental y Técnico SIG",
+      "role_en": "Environmental Management Coordinator and GIS Technician",
+      "location": "Sucre, Bolivia",
+      "start_date": "2014-05-01",
+      "end_date": "2014-12-31",
+      "category": "gis,environment",
+      "summary_es": "Inspecciones ambientales, revisión documental y elaboración de cartografía SIG para evaluación ambiental, forestación y reforestación.",
+      "summary_en": "Performed environmental inspections, document review and GIS mapping for environmental assessment, afforestation and reforestation.",
+      "sort_order": 8
     },
     {
-      "id":"x2013","organization":"Cooperación Alemana PROAGRO GIZ","role_es":"Consultor en riego tecnificado","role_en":"Technified Irrigation Consultant","location":"Tarija, Bolivia","start_date":"2013-09-01","end_date":"2014-04-30","category":"water,agriculture","summary_es":"Consultorías sobre monitoreo de eficiencias de riego y experiencias de riego tecnificado en el Chaco boliviano (Villa Montes y Entre Ríos).","summary_en":"Consulting assignments on irrigation-efficiency monitoring and technified irrigation experiences in the Bolivian Chaco (Villa Montes and Entre Ríos).","sort_order":9
+      "id": "x2013",
+      "organization": "Cooperación Alemana PROAGRO GIZ",
+      "role_es": "Consultor en riego tecnificado",
+      "role_en": "Technified Irrigation Consultant",
+      "location": "Tarija, Bolivia",
+      "start_date": "2013-09-01",
+      "end_date": "2014-04-30",
+      "category": "water,agriculture",
+      "summary_es": "Consultorías sobre monitoreo de eficiencias de riego y experiencias de riego tecnificado en el Chaco boliviano (Villa Montes y Entre Ríos).",
+      "summary_en": "Consulting assignments on irrigation-efficiency monitoring and technified irrigation experiences in the Bolivian Chaco (Villa Montes and Entre Ríos).",
+      "sort_order": 9
     },
     {
-      "id":"x2012","organization":"Gobierno Autónomo Departamental de Cochabamba","role_es":"Técnico de Medio Ambiente","role_en":"Environmental Management Technician","location":"Cochabamba, Bolivia","start_date":"2012-05-01","end_date":"2013-09-30","category":"gis,environment,water","summary_es":"Inspecciones ambientales multisectoriales, revisión de documentos ambientales, SIG aplicado a evaluación ambiental y cartografía de áreas protegidas.","summary_en":"Performed multisector environmental inspections, reviewed environmental documents and applied GIS to environmental assessment and protected-area mapping.","sort_order":10
+      "id": "x2012",
+      "organization": "Gobierno Autónomo Departamental de Cochabamba",
+      "role_es": "Técnico de Medio Ambiente",
+      "role_en": "Environmental Management Technician",
+      "location": "Cochabamba, Bolivia",
+      "start_date": "2012-05-01",
+      "end_date": "2013-09-30",
+      "category": "gis,environment,water",
+      "summary_es": "Inspecciones ambientales multisectoriales, revisión de documentos ambientales, SIG aplicado a evaluación ambiental y cartografía de áreas protegidas.",
+      "summary_en": "Performed multisector environmental inspections, reviewed environmental documents and applied GIS to environmental assessment and protected-area mapping.",
+      "sort_order": 10
     },
     {
-      "id":"x2011","organization":"Gobierno Autónomo Departamental de Cochabamba","role_es":"Técnico · Unidad de Gestión de Riesgos","role_en":"Risk Management Unit Technician","location":"Cochabamba, Bolivia","start_date":"2011-10-03","end_date":"2012-05-06","category":"gis,risk","summary_es":"Elaboración de mapas de riesgo e identificación SIG de zonas afectadas, vulnerables y amenazadas por eventos climáticos.","summary_en":"Prepared risk maps and used GIS to identify areas affected, vulnerable or threatened by climate-related hazards.","sort_order":11
+      "id": "x2011",
+      "organization": "Gobierno Autónomo Departamental de Cochabamba",
+      "role_es": "Técnico · Unidad de Gestión de Riesgos",
+      "role_en": "Risk Management Unit Technician",
+      "location": "Cochabamba, Bolivia",
+      "start_date": "2011-10-03",
+      "end_date": "2012-05-06",
+      "category": "gis,risk",
+      "summary_es": "Elaboración de mapas de riesgo e identificación SIG de zonas afectadas, vulnerables y amenazadas por eventos climáticos.",
+      "summary_en": "Prepared risk maps and used GIS to identify areas affected, vulnerable or threatened by climate-related hazards.",
+      "sort_order": 11
     }
   ],
   "projects": [
     {
-      "id":"p-iniaf","slug":"agricultural-data-iniaf","title_es":"Sistematización y análisis de investigación hortícola","title_en":"Horticultural Research Data Systematization","subtitle_es":"Tomate · Cebolla · Ajo","subtitle_en":"Tomato · Onion · Garlic","description_es":"Caso de análisis basado en documentación del Programa Nacional de Hortalizas: organización de resultados, exploración de variedades, comparación de rendimientos esperados y comunicación de evidencia técnica.","description_en":"Analytics case based on National Horticulture Program documentation: result organization, variety exploration, expected-yield comparison and technical evidence communication.","category":"data","tags":["Data Analysis","Agriculture","Statistics","Research"],"featured":true,"published":true,"sort_order":1,"image_url":""
+      "id": "p-thesis",
+      "slug": "masters-thesis-cliza-infiltration",
+      "title_es": "Maestría · Análisis de infiltrabilidad, suelos y riego",
+      "title_en": "Master's Thesis · Soil Infiltration, GIS and Irrigation Analytics",
+      "subtitle_es": "Cliza, Cochabamba · UMSS / Centro AGUA · 2019",
+      "subtitle_en": "Cliza, Cochabamba · UMSS / Centro AGUA · 2019",
+      "description_es": "Investigación aplicada que integró muestreo de suelos, ensayos de infiltración de doble anillo, regresión y ajuste del modelo de Kostiakov, validación mediante r², análisis espacial y cartografía para traducir la infiltrabilidad en criterios de diseño y manejo de riego por aspersión.",
+      "description_en": "Applied research integrating soil sampling, double-ring infiltration testing, regression and Kostiakov-model fitting, r² validation, spatial analysis and mapping to translate infiltration behavior into sprinkler-irrigation design and management criteria.",
+      "category": "data",
+      "tags": [
+        "Data Analysis",
+        "GIS",
+        "Soils",
+        "Irrigation",
+        "Regression",
+        "Research"
+      ],
+      "featured": true,
+      "published": true,
+      "sort_order": 1,
+      "image_url": "/assets/thesis/infiltrability_map.jpeg"
     },
     {
-      "id":"p-deforestation","slug":"deforestation-risk","title_es":"Análisis de riesgo de deforestación","title_en":"Deforestation Risk Analysis","subtitle_es":"Datos geoespaciales y actividades agropecuarias","subtitle_en":"Geospatial data and agricultural activity","description_es":"Experiencia de consultoría en recopilación, estructuración y análisis territorial de información relacionada con riesgo de deforestación por actividades agropecuarias en Bolivia.","description_en":"Consulting experience collecting, structuring and analyzing territorial information related to deforestation risk from agricultural activities in Bolivia.","category":"gis","tags":["GIS","Environment","Data","Deforestation"],"featured":true,"published":true,"sort_order":2,"image_url":""
+      "id": "p-iniaf",
+      "slug": "agricultural-data-iniaf",
+      "title_es": "Sistematización y análisis de investigación hortícola",
+      "title_en": "Horticultural Research Data Systematization",
+      "subtitle_es": "Tomate · Cebolla · Ajo",
+      "subtitle_en": "Tomato · Onion · Garlic",
+      "description_es": "Caso de análisis basado en documentación del Programa Nacional de Hortalizas: organización de resultados, exploración de variedades, comparación de rendimientos esperados y comunicación de evidencia técnica.",
+      "description_en": "Analytics case based on National Horticulture Program documentation: result organization, variety exploration, expected-yield comparison and technical evidence communication.",
+      "category": "data",
+      "tags": [
+        "Data Analysis",
+        "Agriculture",
+        "Statistics",
+        "Research"
+      ],
+      "featured": true,
+      "published": true,
+      "sort_order": 2,
+      "image_url": ""
     },
     {
-      "id":"p-road","slug":"road-network-gis","title_es":"Inventario geoespacial de red vial","title_en":"Geospatial Road Network Inventory","subtitle_es":"≈ 10.000 km de corredores viales","subtitle_en":"≈ 10,000 km of road corridors","description_es":"Trabajo de levantamiento e inventario básico sobre corredores de la Red Vial Fundamental de Bolivia, con énfasis en organización territorial y evidencia georreferenciada.","description_en":"Survey and basic inventory work across Bolivia's Fundamental Road Network corridors, focused on territorial organization and georeferenced evidence.","category":"gis","tags":["GIS","Infrastructure","Field Data","Data Management"],"featured":true,"published":true,"sort_order":3,"image_url":""
+      "id": "p-deforestation",
+      "slug": "deforestation-risk",
+      "title_es": "Análisis de riesgo de deforestación",
+      "title_en": "Deforestation Risk Analysis",
+      "subtitle_es": "Datos geoespaciales y actividades agropecuarias",
+      "subtitle_en": "Geospatial data and agricultural activity",
+      "description_es": "Experiencia de consultoría en recopilación, estructuración y análisis territorial de información relacionada con riesgo de deforestación por actividades agropecuarias en Bolivia.",
+      "description_en": "Consulting experience collecting, structuring and analyzing territorial information related to deforestation risk from agricultural activities in Bolivia.",
+      "category": "gis",
+      "tags": [
+        "GIS",
+        "Environment",
+        "Data",
+        "Deforestation"
+      ],
+      "featured": true,
+      "published": true,
+      "sort_order": 3,
+      "image_url": ""
     },
     {
-      "id":"p-ai","slug":"smart-trading-review","title_es":"Sistema analítico asistido por IA","title_en":"AI-Assisted Analytics System","subtitle_es":"Python · Flask · Supabase · Plotly · LLM","subtitle_en":"Python · Flask · Supabase · Plotly · LLM","description_es":"Proyecto personal de ingeniería de datos y software para análisis de mercados de criptomonedas, visualización interactiva, persistencia en Supabase y asistencia mediante modelos de IA. Se presenta por su arquitectura y trabajo analítico, no como promesa de resultados financieros.","description_en":"Personal data/software engineering project for cryptocurrency-market analytics, interactive visualization, Supabase persistence and LLM-assisted interpretation. Presented for its architecture and analytics work, not as a claim of financial performance.","category":"ai","tags":["AI","Python","Flask","Supabase","Plotly"],"featured":false,"published":true,"sort_order":4,"image_url":""
+      "id": "p-road",
+      "slug": "road-network-gis",
+      "title_es": "Inventario geoespacial de red vial",
+      "title_en": "Geospatial Road Network Inventory",
+      "subtitle_es": "≈ 10.000 km de corredores viales",
+      "subtitle_en": "≈ 10,000 km of road corridors",
+      "description_es": "Trabajo de levantamiento e inventario básico sobre corredores de la Red Vial Fundamental de Bolivia, con énfasis en organización territorial y evidencia georreferenciada.",
+      "description_en": "Survey and basic inventory work across Bolivia's Fundamental Road Network corridors, focused on territorial organization and georeferenced evidence.",
+      "category": "gis",
+      "tags": [
+        "GIS",
+        "Infrastructure",
+        "Field Data",
+        "Data Management"
+      ],
+      "featured": true,
+      "published": true,
+      "sort_order": 4,
+      "image_url": ""
     },
     {
-      "id":"p-irrigation","slug":"technified-irrigation","title_es":"Riego tecnificado y eficiencia","title_en":"Technified Irrigation and Efficiency","subtitle_es":"Chaco boliviano · GIZ PROAGRO","subtitle_en":"Bolivian Chaco · GIZ PROAGRO","description_es":"Consultorías técnicas sobre monitoreo de eficiencias de riego y sistematización de experiencias de riego tecnificado en Villa Montes y Entre Ríos.","description_en":"Technical consulting on irrigation-efficiency monitoring and systematization of technified irrigation experiences in Villa Montes and Entre Ríos.","category":"water","tags":["Water","Irrigation","Agronomy","Consulting"],"featured":false,"published":true,"sort_order":5,"image_url":""
+      "id": "p-ai",
+      "slug": "smart-trading-review",
+      "title_es": "Sistema analítico asistido por IA",
+      "title_en": "AI-Assisted Analytics System",
+      "subtitle_es": "Python · Flask · Supabase · Plotly · LLM",
+      "subtitle_en": "Python · Flask · Supabase · Plotly · LLM",
+      "description_es": "Proyecto personal de ingeniería de datos y software para análisis de mercados de criptomonedas, visualización interactiva, persistencia en Supabase y asistencia mediante modelos de IA. Se presenta por su arquitectura y trabajo analítico, no como promesa de resultados financieros.",
+      "description_en": "Personal data/software engineering project for cryptocurrency-market analytics, interactive visualization, Supabase persistence and LLM-assisted interpretation. Presented for its architecture and analytics work, not as a claim of financial performance.",
+      "category": "ai",
+      "tags": [
+        "AI",
+        "Python",
+        "Flask",
+        "Supabase",
+        "Plotly"
+      ],
+      "featured": false,
+      "published": true,
+      "sort_order": 5,
+      "image_url": ""
+    },
+    {
+      "id": "p-irrigation",
+      "slug": "technified-irrigation",
+      "title_es": "Riego tecnificado y eficiencia",
+      "title_en": "Technified Irrigation and Efficiency",
+      "subtitle_es": "Chaco boliviano · GIZ PROAGRO",
+      "subtitle_en": "Bolivian Chaco · GIZ PROAGRO",
+      "description_es": "Consultorías técnicas sobre monitoreo de eficiencias de riego y sistematización de experiencias de riego tecnificado en Villa Montes y Entre Ríos.",
+      "description_en": "Technical consulting on irrigation-efficiency monitoring and systematization of technified irrigation experiences in Villa Montes and Entre Ríos.",
+      "category": "water",
+      "tags": [
+        "Water",
+        "Irrigation",
+        "Agronomy",
+        "Consulting"
+      ],
+      "featured": false,
+      "published": true,
+      "sort_order": 6,
+      "image_url": ""
     }
   ],
   "case_studies": [
     {
-      "id":"c-agri","slug":"agri-explorer","title_es":"Agricultural Data Explorer","title_en":"Agricultural Data Explorer","type":"agriculture","published":true,
-      "description_es":"Explorador interactivo construido con datos documentados en resúmenes de ensayos de tomate, cebolla y ajo del INIAF.",
-      "description_en":"Interactive explorer built from documented INIAF summaries of tomato, onion and garlic trials.",
+      "id": "c-thesis",
+      "slug": "masters-thesis-cliza",
+      "title_es": "Tesis de Maestría · Cliza",
+      "title_en": "Master's Thesis · Cliza",
+      "type": "thesis",
+      "published": true,
+      "sort_order": 0,
+      "description_es": "Evaluación de la infiltrabilidad del suelo como criterio de diseño y manejo de sistemas de riego por aspersión en el municipio de Cliza.",
+      "description_en": "Assessment of soil infiltrability as a criterion for sprinkler-irrigation design and management in the municipality of Cliza.",
       "data_json": {
-        "tomato": {"f1_hybrids":116,"introduced_varieties":39,"introduced_hybrids_2013":6,"pure_lines_taiwan":15},
-        "onion": [
-          {"name":"Mizqueña","yield_t_ha":20,"cycle":"120","skin":"Rojo","pungency":"Alta","shelf":"3 meses"},
-          {"name":"Valencianita","yield_t_ha":30,"cycle":"100-110","skin":"Amarilla","pungency":"Baja","shelf":"4 meses"},
-          {"name":"Angaco","yield_t_ha":35,"cycle":"12-130","skin":"Amarilla","pungency":"Baja","shelf":"4 meses"},
-          {"name":"Yali","yield_t_ha":20,"cycle":"110-120","skin":"Rojo","pungency":"Alta","shelf":"5 meses"},
-          {"name":"Prema","yield_t_ha":20,"cycle":"110-120","skin":"Rosada","pungency":"Media","shelf":"2-3 meses"},
-          {"name":"Dayo","yield_t_ha":20,"cycle":"110-120","skin":"Rosada","pungency":"Media","shelf":"3-4 meses"},
-          {"name":"Globosa","yield_t_ha":30,"cycle":"150","skin":"Rojo intenso","pungency":"Media","shelf":"3 meses"},
-          {"name":"Criolla Rosada","yield_t_ha":20,"cycle":"120","skin":"Rosada","pungency":"Media","shelf":"3 meses"},
-          {"name":"Navideña","yield_t_ha":35,"cycle":"120","skin":"Amarilla","pungency":"Baja","shelf":"4 meses"},
-          {"name":"Sintética 14","yield_t_ha":40,"cycle":"120","skin":"Amarilla","pungency":"Baja","shelf":"6 meses"}
+        "year": 2019,
+        "program_es": "Maestría Científica en Gestión Integral de Recursos Hídricos",
+        "program_en": "Scientific Master's in Integrated Water Resources Management",
+        "institution": "Universidad Mayor de San Simón · Centro AGUA",
+        "study_area_km2": 68.15,
+        "slopes_pct": "2–5",
+        "soil_density_g_cm3": "1.23–1.59",
+        "validated_soil_units": 7,
+        "sampled_plots": 22,
+        "tests_per_observation": 2,
+        "test_duration_hours": "5–7",
+        "analysis_methods_es": [
+          "Muestreo y caracterización física del suelo: textura, estructura, densidad aparente y porosidad.",
+          "Ensayos de infiltración mediante infiltrómetros de doble anillo, con dos pruebas simultáneas por punto de observación.",
+          "Curvas de infiltración acumulada y velocidad de infiltración mediante gráficos de dispersión y línea de tendencia potencial.",
+          "Ajuste analítico con el modelo de Kostiakov y validación de homogeneidad mediante coeficiente de determinación r².",
+          "Clasificación de infiltrabilidad con rangos USDA y análisis espacial por unidades de suelo.",
+          "Evaluación de selección, disposición y tiempo de aplicación de aspersores; simulación de disposición con WinSiPP2 12.6."
         ],
-        "garlic": {"research_trials_documented":9,"narrative_varieties_or_ecotypes":17,"table_varieties_listed":16,"introduced_inta_argentina":11,"local_or_collected_listed":5}
+        "analysis_methods_en": [
+          "Soil sampling and physical characterization: texture, structure, bulk density and porosity.",
+          "Double-ring infiltrometer tests, using two simultaneous tests per observation point.",
+          "Accumulated-infiltration and infiltration-rate curves using scatterplots and a power trendline.",
+          "Analytical fitting with the Kostiakov model and homogeneity validation using the coefficient of determination r².",
+          "USDA infiltration-class classification and spatial analysis by soil unit.",
+          "Assessment of sprinkler selection, spacing and application time; sprinkler-layout simulation with WinSiPP2 12.6."
+        ],
+        "classes": [
+          {
+            "key": "slow",
+            "name_es": "Lenta",
+            "name_en": "Slow",
+            "area_pct": 16.3,
+            "units_es": "Asociación Crespo Pampa",
+            "units_en": "Crespo Pampa Association",
+            "basic_range_mm_h": "2.91–4.46",
+            "accumulated_5h_mm": "37–62",
+            "representative_mm_h": null,
+            "max_irrigation": "13 h 44 min",
+            "max_irrigation_minutes": 824
+          },
+          {
+            "key": "mod_slow",
+            "name_es": "Moderadamente lenta",
+            "name_en": "Moderately slow",
+            "area_pct": 62.4,
+            "units_es": "Asociaciones Champa, Ucureña y Cuycuni Pampa",
+            "units_en": "Champa, Ucureña and Cuycuni Pampa associations",
+            "basic_range_mm_h": "8.12–13.61",
+            "accumulated_5h_mm": "84.87–134.46",
+            "representative_mm_h": 11.9,
+            "representative_accumulated_5h_mm": 105.78,
+            "max_irrigation": "4 h 55 min",
+            "max_irrigation_minutes": 295
+          },
+          {
+            "key": "moderate",
+            "name_es": "Moderada",
+            "name_en": "Moderate",
+            "area_pct": 21.0,
+            "units_es": "Asociación Román Calle y Consociaciones Chaqui Mayu y Sensano",
+            "units_en": "Román Calle Association and Chaqui Mayu and Sensano consociations",
+            "basic_range_mm_h": "15.5–24.8",
+            "accumulated_5h_mm": "109–174",
+            "representative_mm_h": 20.0,
+            "representative_accumulated_5h_mm": 126.77,
+            "max_irrigation": "2 h 34 min",
+            "max_irrigation_minutes": 154
+          }
+        ],
+        "design_findings_es": [
+          "La infiltrabilidad funciona como criterio de diseño y manejo del riego presurizado a escala parcelaria.",
+          "En suelos de infiltrabilidad lenta y moderadamente lenta existe mayor restricción para elegir aspersores con tasas de aplicación altas.",
+          "Para un mismo aspersor, en suelos lentos o moderadamente lentos se deben ampliar las distancias entre laterales y aspersores para reducir la tasa de aplicación.",
+          "En suelos de infiltrabilidad moderada puede reducirse la separación para aproximar la tasa de aplicación a la infiltrabilidad del suelo.",
+          "El tiempo de riego requerido es mayor en suelos de infiltrabilidad lenta y disminuye a medida que aumenta la infiltrabilidad."
+        ],
+        "design_findings_en": [
+          "Infiltrability is a design and management criterion for pressurized field-scale irrigation.",
+          "Slow and moderately slow soils impose greater restrictions on sprinkler selection when application rates are high.",
+          "For the same sprinkler, lateral and sprinkler spacing should be increased on slow or moderately slow soils to reduce application rate.",
+          "On moderately infiltrating soils, spacing can be reduced to bring application rate closer to soil infiltrability.",
+          "Required irrigation time is greatest on slow soils and decreases as infiltrability increases."
+        ],
+        "conclusions_es": [
+          "Se validaron siete unidades de suelo con alta heterogeneidad espacial: cinco asociaciones y dos consociaciones.",
+          "Se identificaron tres clases de infiltrabilidad: lenta, moderadamente lenta y moderada.",
+          "La clase moderadamente lenta ocupa la mayor proporción del municipio (62.4%), seguida por la moderada (21%) y la lenta (16.3%); los porcentajes están redondeados en la tesis.",
+          "La densidad aparente observada (1.23–1.59 g/cm³) refleja niveles de compactación que afectan la absorción de agua y el crecimiento, pero pueden mejorarse mediante manejo del suelo.",
+          "La infiltrabilidad condiciona la elección del aspersor, su disposición y el tiempo de riego.",
+          "Para obtener curvas representativas se recomienda realizar al menos dos pruebas de infiltración por parcela y una tercera cuando la variación entre pruebas sea amplia.",
+          "En suelos pesados, las pruebas deben extenderse hasta alcanzar la infiltración básica; la tesis recomienda al menos 7 horas cuando sea necesario."
+        ],
+        "conclusions_en": [
+          "Seven soil units with marked spatial heterogeneity were validated: five associations and two consociations.",
+          "Three infiltrability classes were identified: slow, moderately slow and moderate.",
+          "The moderately slow class covers the largest share of the municipality (62.4%), followed by moderate (21%) and slow (16.3%); percentages are rounded in the thesis.",
+          "Observed bulk density (1.23–1.59 g/cm³) indicates compaction levels that affect water uptake and plant growth but can be improved through soil management.",
+          "Infiltrability conditions sprinkler selection, spacing and irrigation duration.",
+          "At least two infiltration tests per field are recommended for representative curves, with a third test when variability is high.",
+          "On heavy soils, tests should continue until basic infiltration is reached; the thesis recommends at least 7 hours when needed."
+        ],
+        "maps": [
+          {
+            "title_es": "Mapa validado de unidades de suelo",
+            "title_en": "Validated soil-unit map",
+            "url": "/assets/thesis/soil_units_validated_map.jpeg",
+            "caption_es": "Siete unidades de suelo validadas a partir de trabajo de campo y cartografía base.",
+            "caption_en": "Seven soil units validated using fieldwork and base mapping."
+          },
+          {
+            "title_es": "Mapa de clasificación por infiltrabilidad",
+            "title_en": "Infiltrability classification map",
+            "url": "/assets/thesis/infiltrability_map.jpeg",
+            "caption_es": "Distribución espacial de las clases lenta, moderadamente lenta y moderada.",
+            "caption_en": "Spatial distribution of slow, moderately slow and moderate classes."
+          },
+          {
+            "title_es": "Mapa de ubicación del municipio",
+            "title_en": "Municipality location map",
+            "url": "/assets/thesis/location_map.png",
+            "caption_es": "Localización de Cliza en Cochabamba, Bolivia.",
+            "caption_en": "Location of Cliza in Cochabamba, Bolivia."
+          }
+        ]
       }
     },
     {
-      "id":"c-map","slug":"career-gis-map","title_es":"Mapa de experiencia territorial","title_en":"Territorial Experience Map","type":"map","published":true,
-      "description_es":"Mapa interactivo de ciudades y regiones asociadas a experiencias profesionales documentadas en el CV.",
-      "description_en":"Interactive map of cities and regions associated with professional experience documented in the CV.",
+      "id": "c-agri",
+      "slug": "agri-explorer",
+      "title_es": "Agricultural Data Explorer",
+      "title_en": "Agricultural Data Explorer",
+      "type": "agriculture",
+      "published": true,
+      "description_es": "Explorador interactivo construido con datos documentados en resúmenes de ensayos de tomate, cebolla y ajo del INIAF.",
+      "description_en": "Interactive explorer built from documented INIAF summaries of tomato, onion and garlic trials.",
+      "data_json": {
+        "tomato": {
+          "f1_hybrids": 116,
+          "introduced_varieties": 39,
+          "introduced_hybrids_2013": 6,
+          "pure_lines_taiwan": 15
+        },
+        "onion": [
+          {
+            "name": "Mizqueña",
+            "yield_t_ha": 20,
+            "cycle": "120",
+            "skin": "Rojo",
+            "pungency": "Alta",
+            "shelf": "3 meses"
+          },
+          {
+            "name": "Valencianita",
+            "yield_t_ha": 30,
+            "cycle": "100-110",
+            "skin": "Amarilla",
+            "pungency": "Baja",
+            "shelf": "4 meses"
+          },
+          {
+            "name": "Angaco",
+            "yield_t_ha": 35,
+            "cycle": "12-130",
+            "skin": "Amarilla",
+            "pungency": "Baja",
+            "shelf": "4 meses"
+          },
+          {
+            "name": "Yali",
+            "yield_t_ha": 20,
+            "cycle": "110-120",
+            "skin": "Rojo",
+            "pungency": "Alta",
+            "shelf": "5 meses"
+          },
+          {
+            "name": "Prema",
+            "yield_t_ha": 20,
+            "cycle": "110-120",
+            "skin": "Rosada",
+            "pungency": "Media",
+            "shelf": "2-3 meses"
+          },
+          {
+            "name": "Dayo",
+            "yield_t_ha": 20,
+            "cycle": "110-120",
+            "skin": "Rosada",
+            "pungency": "Media",
+            "shelf": "3-4 meses"
+          },
+          {
+            "name": "Globosa",
+            "yield_t_ha": 30,
+            "cycle": "150",
+            "skin": "Rojo intenso",
+            "pungency": "Media",
+            "shelf": "3 meses"
+          },
+          {
+            "name": "Criolla Rosada",
+            "yield_t_ha": 20,
+            "cycle": "120",
+            "skin": "Rosada",
+            "pungency": "Media",
+            "shelf": "3 meses"
+          },
+          {
+            "name": "Navideña",
+            "yield_t_ha": 35,
+            "cycle": "120",
+            "skin": "Amarilla",
+            "pungency": "Baja",
+            "shelf": "4 meses"
+          },
+          {
+            "name": "Sintética 14",
+            "yield_t_ha": 40,
+            "cycle": "120",
+            "skin": "Amarilla",
+            "pungency": "Baja",
+            "shelf": "6 meses"
+          }
+        ],
+        "garlic": {
+          "research_trials_documented": 9,
+          "narrative_varieties_or_ecotypes": 17,
+          "table_varieties_listed": 16,
+          "introduced_inta_argentina": 11,
+          "local_or_collected_listed": 5
+        }
+      }
+    },
+    {
+      "id": "c-map",
+      "slug": "career-gis-map",
+      "title_es": "Mapa de experiencia territorial",
+      "title_en": "Territorial Experience Map",
+      "type": "map",
+      "published": true,
+      "description_es": "Mapa interactivo de ciudades y regiones asociadas a experiencias profesionales documentadas en el CV.",
+      "description_en": "Interactive map of cities and regions associated with professional experience documented in the CV.",
       "data_json": {
         "points": [
-          {"name":"Cochabamba","lat":-17.3935,"lng":-66.1570,"note_es":"Gestión de riesgos, medio ambiente, consultoría e investigación","note_en":"Risk management, environment, consulting and research"},
-          {"name":"Sucre","lat":-19.0196,"lng":-65.2619,"note_es":"Gestión ambiental y SIG","note_en":"Environmental management and GIS"},
-          {"name":"Villa Montes","lat":-21.2647,"lng":-63.4677,"note_es":"Riego tecnificado · GIZ","note_en":"Technified irrigation · GIZ"},
-          {"name":"Santa Cruz de la Sierra","lat":-17.7833,"lng":-63.1821,"note_es":"Proyectos socioambientales y energéticos","note_en":"Socio-environmental and energy projects"},
-          {"name":"La Paz","lat":-16.4897,"lng":-68.1193,"note_es":"Consultoría y estudios territoriales","note_en":"Consulting and territorial studies"}
+          {
+            "name": "Cochabamba",
+            "lat": -17.3935,
+            "lng": -66.157,
+            "note_es": "Gestión de riesgos, medio ambiente, consultoría e investigación",
+            "note_en": "Risk management, environment, consulting and research"
+          },
+          {
+            "name": "Sucre",
+            "lat": -19.0196,
+            "lng": -65.2619,
+            "note_es": "Gestión ambiental y SIG",
+            "note_en": "Environmental management and GIS"
+          },
+          {
+            "name": "Villa Montes",
+            "lat": -21.2647,
+            "lng": -63.4677,
+            "note_es": "Riego tecnificado · GIZ",
+            "note_en": "Technified irrigation · GIZ"
+          },
+          {
+            "name": "Santa Cruz de la Sierra",
+            "lat": -17.7833,
+            "lng": -63.1821,
+            "note_es": "Proyectos socioambientales y energéticos",
+            "note_en": "Socio-environmental and energy projects"
+          },
+          {
+            "name": "La Paz",
+            "lat": -16.4897,
+            "lng": -68.1193,
+            "note_es": "Consultoría y estudios territoriales",
+            "note_en": "Consulting and territorial studies"
+          }
         ]
       }
     }

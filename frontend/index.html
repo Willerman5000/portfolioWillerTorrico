@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio de Willer Gianni Torrico Arispe: analítica de datos, SIG, recursos hídricos, IA aplicada y consultoría internacional." />
+  <meta name="description" content="Portfolio de Willer Gianni Torrico Arispe: analítica de datos, SIG, suelos, riego, recursos hídricos, IA aplicada y consultoría internacional." />
   <meta name="theme-color" content="#071423" />
   <title>Willer Torrico · Data, GIS & Water Resources</title>
   <link rel="preconnect" href="https://unpkg.com" crossorigin />
@@ -19,6 +19,7 @@
       <nav class="desktop-nav" aria-label="Navegación principal">
         <a href="#about" data-i18n="nav.about">Sobre mí</a>
         <a href="#projects" data-i18n="nav.projects">Proyectos</a>
+        <a href="#thesis-lab" data-i18n="nav.thesis">Tesis</a>
         <a href="#data-lab" data-i18n="nav.data">Data Lab</a>
         <a href="#gis" data-i18n="nav.gis">SIG</a>
         <a href="#experience" data-i18n="nav.experience">Experiencia</a>
@@ -37,6 +38,7 @@
     <nav class="mobile-nav" id="mobileNav" hidden>
       <a href="#about" data-i18n="nav.about">Sobre mí</a>
       <a href="#projects" data-i18n="nav.projects">Proyectos</a>
+      <a href="#thesis-lab" data-i18n="nav.thesis">Tesis</a>
       <a href="#data-lab" data-i18n="nav.data">Data Lab</a>
       <a href="#gis" data-i18n="nav.gis">SIG</a>
       <a href="#experience" data-i18n="nav.experience">Experiencia</a>
@@ -144,6 +146,41 @@
       </div>
     </section>
 
+
+    <section class="section thesis-section" id="thesis-lab">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <span class="section-kicker" data-i18n="thesis.kicker">Maestría · análisis aplicado</span>
+          <h2 data-i18n="thesis.title">Datos, suelos, SIG y riego integrados en una investigación real</h2>
+          <p data-i18n="thesis.text">Mi tesis de Maestría en Gestión Integral de Recursos Hídricos convirtió datos de campo y cartografía en criterios concretos para diseñar y manejar riego por aspersión en Cliza.</p>
+        </div>
+
+        <div class="thesis-hero reveal delay-1">
+          <div>
+            <span class="project-subtitle" data-i18n="thesis.source">Tesis de Maestría · UMSS / Centro AGUA · 2019</span>
+            <h3 data-i18n="thesis.fullTitle">Evaluación de la infiltrabilidad del suelo, como criterio de diseño y manejo de sistemas de riego por aspersión en el municipio de Cliza</h3>
+            <p class="thesis-intro" data-i18n="thesis.intro">Trabajo aplicado que conecta medición de campo, análisis cuantitativo, suelos, cartografía SIG y diseño de riego.</p>
+          </div>
+          <div class="thesis-tags" aria-label="Competencias">
+            <span>Data Analysis</span><span>Regression</span><span>Soils</span><span>GIS</span><span>Irrigation</span><span>Research</span>
+          </div>
+        </div>
+
+        <div id="thesisStats" class="thesis-stats reveal delay-1"></div>
+
+        <div class="thesis-shell reveal delay-2">
+          <div class="thesis-tabs" role="tablist" aria-label="Análisis de tesis">
+            <button class="thesis-tab active" type="button" data-thesis-view="classes" role="tab" aria-selected="true" data-i18n="thesis.classes">Clases de infiltrabilidad</button>
+            <button class="thesis-tab" type="button" data-thesis-view="irrigation" role="tab" aria-selected="false" data-i18n="thesis.irrigation">Diseño y manejo de riego</button>
+            <button class="thesis-tab" type="button" data-thesis-view="methods" role="tab" aria-selected="false" data-i18n="thesis.methods">Métodos de análisis</button>
+            <button class="thesis-tab" type="button" data-thesis-view="maps" role="tab" aria-selected="false" data-i18n="thesis.maps">Mapas SIG</button>
+            <button class="thesis-tab" type="button" data-thesis-view="conclusions" role="tab" aria-selected="false" data-i18n="thesis.conclusions">Conclusiones</button>
+          </div>
+          <div id="thesisContent" class="thesis-content" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section data-lab" id="data-lab">
       <div class="shell">
         <div class="section-heading reveal">
@@ -178,7 +215,7 @@
         <div class="section-heading reveal">
           <span class="section-kicker">GIS · Spatial Analytics</span>
           <h2 data-i18n="gis.title">Experiencia territorial en un mapa interactivo</h2>
-          <p data-i18n="gis.text">El mapa muestra ciudades vinculadas a experiencias documentadas. La capa puede ampliarse posteriormente con mapas de tesis o archivos SHP/GeoJSON cuando se incorporen las fuentes originales.</p>
+          <p data-i18n="gis.text">El mapa interactivo resume la experiencia territorial y el portfolio incorpora además mapas originales de la tesis de maestría sobre unidades de suelo e infiltrabilidad en Cliza.</p>
         </div>
         <div class="map-layout reveal delay-1">
           <div id="careerMap" class="career-map" aria-label="Mapa de experiencia profesional"></div>
@@ -186,8 +223,8 @@
             <h3 data-i18n="gis.coverage">Cobertura profesional</h3>
             <div id="mapLegend" class="map-legend"></div>
             <div class="source-note">
-              <b data-i18n="gis.thesisTitle">Módulo de tesis preparado</b>
-              <p data-i18n="gis.thesisText">La arquitectura acepta GeoJSON, capas SIG e indicadores de la tesis. En v1.0 no se publican resultados de tesis que no estén presentes en los archivos fuente adjuntos.</p>
+              <b data-i18n="gis.thesisTitle">Cartografía de la tesis incorporada</b>
+              <p data-i18n="gis.thesisText">La sección de Maestría incluye mapas originales de ubicación, unidades de suelo e infiltrabilidad, junto con los resultados cuantitativos documentados.</p>
             </div>
           </aside>
         </div>
@@ -249,7 +286,7 @@
   <footer class="footer">
     <div class="shell footer-grid">
       <div><strong>Willer Gianni Torrico Arispe</strong><p data-i18n="footer.tagline">Data · GIS · Water Resources · Applied AI</p></div>
-      <div class="footer-actions"><a href="/admin.html" rel="nofollow" data-i18n="footer.admin">Administrar portfolio</a><span>v1.0</span></div>
+      <div class="footer-actions"><a href="/admin.html" rel="nofollow" data-i18n="footer.admin">Administrar portfolio</a><span>v1.1</span></div>
     </div>
   </footer>
 

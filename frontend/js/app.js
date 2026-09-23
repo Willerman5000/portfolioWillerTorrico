@@ -6,18 +6,20 @@ const state = {
   skillFilter: 'all',
   experienceFilter: 'all',
   labDataset: 'onion',
+  thesisView: 'classes',
   map: null
 };
 
 const t = {
   es: {
-    'nav.about':'Sobre mí','nav.projects':'Proyectos','nav.data':'Data Lab','nav.gis':'SIG','nav.experience':'Experiencia','nav.contact':'Contacto',
+    'nav.about':'Sobre mí','nav.projects':'Proyectos','nav.thesis':'Tesis','nav.data':'Data Lab','nav.gis':'SIG','nav.experience':'Experiencia','nav.contact':'Contacto',
     'hero.work':'Ver proyectos','hero.cv':'Descargar CV ATS','hero.available':'Disponible para proyectos remotos','hero.years':'años de trayectoria',
     'about.kicker':'Perfil profesional','about.title':'Datos, territorio y decisiones','about.text':'Mi perfil combina ciencias agroambientales, recursos hídricos, geotecnologías y analítica de datos. Esa combinación permite abordar problemas técnicos desde la evidencia, no desde una sola herramienta.','about.data':'Limpieza, análisis, estadística, visualización y comunicación de resultados.','about.gis':'Análisis espacial, cartografía, riesgo, ambiente y teledetección.','about.water':'Gestión integral, riego, agrohidrología y evaluación técnica.','about.ai':'Automatización, asistentes analíticos y flujos de trabajo con LLM.',
     'skills.kicker':'Stack profesional','skills.title':'Herramientas y capacidades','filters.all':'Todas','filters.environment':'Ambiente',
     'projects.kicker':'Trabajo seleccionado','projects.title':'Casos que demuestran capacidad técnica','projects.text':'Los proyectos se presentan por problema, datos, herramientas y resultado técnico. El foco está en evidencia verificable y transferible a trabajos remotos.','projects.open':'Ver caso','projects.featured':'Destacado',
     'lab.kicker':'Data Lab','lab.title':'Investigación agrícola convertida en una experiencia interactiva','lab.text':'Este módulo transforma tablas técnicas en comparaciones visuales. Los datos se conservan tal como están documentados y el sistema señala inconsistencias de origen en vez de ocultarlas.','lab.onion':'Cebolla','lab.tomato':'Tomate','lab.garlic':'Ajo','lab.chartKicker':'Comparación','lab.sort':'Ordenar','lab.highLow':'Mayor a menor','lab.lowHigh':'Menor a mayor','lab.alpha':'Alfabético',
-    'gis.title':'Experiencia territorial en un mapa interactivo','gis.text':'El mapa muestra ciudades vinculadas a experiencias documentadas. La capa puede ampliarse posteriormente con mapas de tesis o archivos SHP/GeoJSON cuando se incorporen las fuentes originales.','gis.coverage':'Cobertura profesional','gis.thesisTitle':'Módulo de tesis preparado','gis.thesisText':'La arquitectura acepta GeoJSON, capas SIG e indicadores de la tesis. En v1.0 no se publican resultados de tesis que no estén presentes en los archivos fuente adjuntos.',
+    'thesis.kicker':'Maestría · análisis aplicado','thesis.title':'Datos, suelos, SIG y riego integrados en una investigación real','thesis.text':'Mi tesis de Maestría en Gestión Integral de Recursos Hídricos convirtió datos de campo y cartografía en criterios concretos para diseñar y manejar riego por aspersión en Cliza.','thesis.fullTitle':'Evaluación de la infiltrabilidad del suelo, como criterio de diseño y manejo de sistemas de riego por aspersión en el municipio de Cliza','thesis.intro':'Trabajo aplicado que conecta medición de campo, análisis cuantitativo, suelos, cartografía SIG y diseño de riego.','thesis.classes':'Clases de infiltrabilidad','thesis.irrigation':'Diseño y manejo de riego','thesis.methods':'Métodos de análisis','thesis.maps':'Mapas SIG','thesis.conclusions':'Conclusiones','thesis.area':'Superficie municipal','thesis.basic':'Infiltración básica','thesis.acc5h':'Infiltración acumulada · 5 h','thesis.maxTime':'Tiempo máximo de riego','thesis.source':'Tesis de Maestría · UMSS / Centro AGUA · 2019','thesis.rounding':'Los porcentajes publicados en la tesis están redondeados y suman 99,7%.','thesis.skills':'Competencias demostradas','thesis.skillsText':'Análisis de datos · regresión · modelado de infiltración · suelos · riego por aspersión · análisis espacial · cartografía SIG · comunicación técnica',
+    'gis.title':'Experiencia territorial en un mapa interactivo','gis.text':'El mapa interactivo resume la experiencia territorial y el portfolio incorpora además mapas originales de la tesis de maestría sobre unidades de suelo e infiltrabilidad en Cliza.','gis.coverage':'Cobertura profesional','gis.thesisTitle':'Cartografía de la tesis incorporada','gis.thesisText':'La sección de Maestría incluye mapas originales de ubicación, unidades de suelo e infiltrabilidad, junto con los resultados cuantitativos documentados.',
     'experience.kicker':'Trayectoria','experience.title':'Experiencia multidisciplinaria','experience.text':'Consultoría, sector público, cooperación internacional, investigación y proyectos socioambientales.',
     'education.kicker':'Formación','education.title':'Educación y especialización',
     'contact.kicker':'Contacto','contact.title':'¿Necesitás transformar datos técnicos en una decisión útil?','contact.text':'Disponible para análisis de datos, SIG, automatización, recursos hídricos, investigación aplicada y soporte técnico remoto.','contact.name':'Nombre','contact.email':'Email','contact.company':'Empresa / organización','contact.type':'Tipo de proyecto','contact.message':'Mensaje','contact.send':'Enviar mensaje','contact.sending':'Enviando…','contact.ok':'Mensaje enviado. Gracias por contactar.','contact.error':'No se pudo enviar. Podés contactarme directamente por email o LinkedIn.','contact.required':'Completá nombre, email y mensaje.',
@@ -27,13 +29,14 @@ const t = {
     'map.fallback':'El mapa interactivo necesita conexión para cargar Leaflet. Las ubicaciones siguen disponibles en la lista lateral.'
   },
   en: {
-    'nav.about':'About','nav.projects':'Projects','nav.data':'Data Lab','nav.gis':'GIS','nav.experience':'Experience','nav.contact':'Contact',
+    'nav.about':'About','nav.projects':'Projects','nav.thesis':'Thesis','nav.data':'Data Lab','nav.gis':'GIS','nav.experience':'Experience','nav.contact':'Contact',
     'hero.work':'View projects','hero.cv':'Download ATS Resume','hero.available':'Available for remote projects','hero.years':'years across career timeline',
     'about.kicker':'Professional profile','about.title':'Data, territory and decisions','about.text':'My profile combines agro-environmental sciences, water resources, geotechnologies and data analytics. That combination helps solve technical problems through evidence rather than through a single tool.','about.data':'Cleaning, analysis, statistics, visualization and communication of results.','about.gis':'Spatial analysis, mapping, risk, environment and remote sensing.','about.water':'Integrated management, irrigation, agrohydrology and technical assessment.','about.ai':'Automation, analytical assistants and LLM-enabled workflows.',
     'skills.kicker':'Professional stack','skills.title':'Tools and capabilities','filters.all':'All','filters.environment':'Environment',
     'projects.kicker':'Selected work','projects.title':'Cases that demonstrate technical capability','projects.text':'Projects are presented through problem, data, tools and technical outcome, with an emphasis on verifiable evidence transferable to remote work.','projects.open':'View case','projects.featured':'Featured',
     'lab.kicker':'Data Lab','lab.title':'Agricultural research turned into an interactive experience','lab.text':'This module turns technical tables into visual comparisons. Source values are preserved as documented, and source inconsistencies are flagged instead of silently corrected.','lab.onion':'Onion','lab.tomato':'Tomato','lab.garlic':'Garlic','lab.chartKicker':'Comparison','lab.sort':'Sort','lab.highLow':'High to low','lab.lowHigh':'Low to high','lab.alpha':'Alphabetical',
-    'gis.title':'Territorial experience on an interactive map','gis.text':'The map shows cities associated with documented professional experience. It can later be expanded with thesis maps or SHP/GeoJSON layers once the original sources are added.','gis.coverage':'Professional coverage','gis.thesisTitle':'Thesis module ready','gis.thesisText':'The architecture accepts GeoJSON, GIS layers and thesis indicators. Version 1.0 does not publish thesis findings that are absent from the attached source files.',
+    'thesis.kicker':'Master’s · applied analytics','thesis.title':'Data, soils, GIS and irrigation integrated in a real research project','thesis.text':'My Master’s thesis in Integrated Water Resources Management turned field data and mapping into practical criteria for sprinkler-irrigation design and management in Cliza.','thesis.fullTitle':'Assessment of soil infiltrability as a criterion for sprinkler-irrigation design and management in the municipality of Cliza','thesis.intro':'Applied research connecting field measurement, quantitative analysis, soils, GIS mapping and irrigation design.','thesis.classes':'Infiltrability classes','thesis.irrigation':'Irrigation design & management','thesis.methods':'Analysis methods','thesis.maps':'GIS maps','thesis.conclusions':'Conclusions','thesis.area':'Municipal area','thesis.basic':'Basic infiltration','thesis.acc5h':'Accumulated infiltration · 5 h','thesis.maxTime':'Maximum irrigation time','thesis.source':'Master’s thesis · UMSS / Centro AGUA · 2019','thesis.rounding':'Percentages reported in the thesis are rounded and sum to 99.7%.','thesis.skills':'Demonstrated competencies','thesis.skillsText':'Data analytics · regression · infiltration modelling · soils · sprinkler irrigation · spatial analysis · GIS mapping · technical communication',
+    'gis.title':'Territorial experience on an interactive map','gis.text':'The interactive map summarizes territorial experience, while the portfolio also includes original thesis maps of soil units and infiltrability in Cliza.','gis.coverage':'Professional coverage','gis.thesisTitle':'Thesis cartography included','gis.thesisText':'The Master’s section includes original location, soil-unit and infiltrability maps together with documented quantitative findings.',
     'experience.kicker':'Career','experience.title':'Multidisciplinary experience','experience.text':'Consulting, public sector, international cooperation, research and socio-environmental projects.',
     'education.kicker':'Education','education.title':'Education and specialization',
     'contact.kicker':'Contact','contact.title':'Need to turn technical data into a useful decision?','contact.text':'Available for data analytics, GIS, automation, water resources, applied research and remote technical support.','contact.name':'Name','contact.email':'Email','contact.company':'Company / organization','contact.type':'Project type','contact.message':'Message','contact.send':'Send message','contact.sending':'Sending…','contact.ok':'Message sent. Thanks for reaching out.','contact.error':'The message could not be sent. You can contact me directly by email or LinkedIn.','contact.required':'Please complete name, email and message.',
@@ -79,6 +82,7 @@ function hydrate(){
   renderProfile();
   renderSkills();
   renderProjects();
+  renderThesis();
   renderExperience();
   renderEducation();
   renderLab();
@@ -181,6 +185,119 @@ function renderEducation(){
       <h3>${esc(localized(e,'degree'))}</h3>
       <p>${esc(e.institution)}</p>
     </article>`).join('');
+}
+
+function getThesisCase(){return (state.data.case_studies||[]).find(x=>x.type==='thesis')?.data_json || {};}
+
+function renderThesis(){
+  const d=getThesisCase();
+  const content=document.getElementById('thesisContent');
+  const stats=document.getElementById('thesisStats');
+  if(!content || !stats || !d.classes) return;
+
+  const statItems=[
+    [d.validated_soil_units, state.lang==='es'?'unidades de suelo validadas':'validated soil units'],
+    [d.sampled_plots, state.lang==='es'?'parcelas muestreadas':'sampled plots'],
+    [`${d.tests_per_observation}×`, state.lang==='es'?'pruebas por punto':'tests per point'],
+    [d.test_duration_hours+' h', state.lang==='es'?'duración de prueba':'test duration'],
+    [d.soil_density_g_cm3, 'g/cm³ · '+(state.lang==='es'?'densidad aparente':'bulk density')]
+  ];
+  stats.innerHTML=statItems.map(([v,l])=>`<div class="thesis-stat"><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join('');
+
+  const classes=d.classes||[];
+  if(state.thesisView==='classes'){
+    const maxArea=Math.max(...classes.map(x=>x.area_pct||0),1);
+    content.innerHTML=`
+      <div class="thesis-panel-grid">
+        <div class="thesis-chart-card">
+          <div class="thesis-card-head"><div><span class="section-kicker">${tr('thesis.area')}</span><h3>${state.lang==='es'?'Distribución espacial por clase':'Spatial distribution by class'}</h3></div></div>
+          <div class="thesis-bars">${classes.map(c=>`
+            <div class="thesis-bar-row">
+              <div class="thesis-bar-label"><b>${esc(localized(c,'name'))}</b><small>${esc(localized(c,'units'))}</small></div>
+              <div class="thesis-bar-track"><span style="width:${(c.area_pct/maxArea)*100}%"></span></div>
+              <strong>${c.area_pct}%</strong>
+            </div>`).join('')}</div>
+          <p class="thesis-note">${tr('thesis.rounding')}</p>
+        </div>
+        <div class="thesis-class-cards">${classes.map(c=>`
+          <article class="thesis-class-card">
+            <span class="thesis-class-dot ${esc(c.key)}"></span>
+            <h3>${esc(localized(c,'name'))}</h3>
+            <dl>
+              <div><dt>${tr('thesis.area')}</dt><dd>${c.area_pct}%</dd></div>
+              <div><dt>${tr('thesis.basic')}</dt><dd>${esc(c.basic_range_mm_h)} mm/h</dd></div>
+              <div><dt>${tr('thesis.acc5h')}</dt><dd>${esc(c.accumulated_5h_mm)} mm</dd></div>
+            </dl>
+          </article>`).join('')}</div>
+      </div>`;
+  } else if(state.thesisView==='irrigation'){
+    const maxMin=Math.max(...classes.map(x=>x.max_irrigation_minutes||0),1);
+    const findings=state.lang==='es'?d.design_findings_es:d.design_findings_en;
+    content.innerHTML=`
+      <div class="thesis-panel-grid">
+        <div class="thesis-chart-card">
+          <div class="thesis-card-head"><div><span class="section-kicker">${tr('thesis.maxTime')}</span><h3>${state.lang==='es'?'Comparación por clase de suelo':'Comparison by soil class'}</h3></div></div>
+          <div class="irrigation-bars">${classes.map(c=>`
+            <div class="irrigation-row">
+              <div><b>${esc(localized(c,'name'))}</b><small>${esc(c.basic_range_mm_h)} mm/h</small></div>
+              <div class="irrigation-track"><span style="width:${(c.max_irrigation_minutes/maxMin)*100}%"></span></div>
+              <strong>${esc(c.max_irrigation)}</strong>
+            </div>`).join('')}</div>
+        </div>
+        <div class="thesis-findings">
+          <span class="section-kicker">${state.lang==='es'?'Conclusiones de diseño':'Design findings'}</span>
+          <ol>${(findings||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ol>
+        </div>
+      </div>`;
+  } else if(state.thesisView==='methods'){
+    const methods=state.lang==='es'?d.analysis_methods_es:d.analysis_methods_en;
+    content.innerHTML=`
+      <div class="methods-layout">
+        <div class="methods-list">${(methods||[]).map((m,i)=>`<article><span>${i+1}</span><p>${esc(m)}</p></article>`).join('')}</div>
+        <aside class="methods-proof">
+          <span class="section-kicker">${tr('thesis.skills')}</span>
+          <h3>${state.lang==='es'?'De datos de campo a una decisión de riego':'From field data to an irrigation decision'}</h3>
+          <p>${tr('thesis.skillsText')}</p>
+          <div class="method-flow">
+            <b>${state.lang==='es'?'Muestreo':'Sampling'}</b><span>→</span>
+            <b>${state.lang==='es'?'Modelado':'Modelling'}</b><span>→</span>
+            <b>r²</b><span>→</span>
+            <b>SIG</b><span>→</span>
+            <b>${state.lang==='es'?'Diseño':'Design'}</b>
+          </div>
+        </aside>
+      </div>`;
+  } else if(state.thesisView==='maps'){
+    content.innerHTML=`
+      <div class="thesis-map-gallery">${(d.maps||[]).map((m,i)=>`
+        <button class="thesis-map-card" type="button" data-thesis-map="${esc(m.url)}" data-thesis-title="${esc(localized(m,'title'))}" data-thesis-caption="${esc(localized(m,'caption'))}">
+          <img src="${esc(m.url)}" alt="${esc(localized(m,'title'))}" loading="lazy">
+          <span><b>${esc(localized(m,'title'))}</b><small>${esc(localized(m,'caption'))}</small></span>
+        </button>`).join('')}</div>`;
+    document.querySelectorAll('[data-thesis-map]').forEach(btn=>btn.addEventListener('click',()=>openThesisMap(btn)));
+  } else {
+    const conclusions=state.lang==='es'?d.conclusions_es:d.conclusions_en;
+    content.innerHTML=`
+      <div class="conclusion-layout">
+        <div class="conclusion-list">${(conclusions||[]).map((x,i)=>`<article><span>${i+1}</span><p>${esc(x)}</p></article>`).join('')}</div>
+        <aside class="conclusion-callout">
+          <span class="section-kicker">Impact</span>
+          <h3>${state.lang==='es'?'La tesis demuestra una cadena analítica completa':'The thesis demonstrates an end-to-end analytical workflow'}</h3>
+          <p>${state.lang==='es'?'Trabajo de campo, control de calidad, modelado, análisis espacial y traducción de resultados a recomendaciones técnicas de riego.':'Fieldwork, quality control, modelling, spatial analysis and translation of results into technical irrigation recommendations.'}</p>
+        </aside>
+      </div>`;
+  }
+}
+
+function openThesisMap(btn){
+  const dlg=document.getElementById('projectDialog');
+  document.getElementById('dialogContent').innerHTML=`<div class="dialog-inner thesis-map-dialog">
+    <span class="section-kicker">${tr('thesis.source')}</span>
+    <h2>${esc(btn.dataset.thesisTitle||'')}</h2>
+    <img src="${esc(btn.dataset.thesisMap||'')}" alt="${esc(btn.dataset.thesisTitle||'')}">
+    <p>${esc(btn.dataset.thesisCaption||'')}</p>
+  </div>`;
+  if(typeof dlg.showModal==='function') dlg.showModal(); else dlg.setAttribute('open','');
 }
 
 function getAgriCase(){return (state.data.case_studies||[]).find(x=>x.type==='agriculture')?.data_json || {};}
@@ -290,6 +407,7 @@ function init(){
   menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!open));mobile.hidden=open;});
   mobile?.addEventListener('click',e=>{if(e.target.matches('a')){mobile.hidden=true;menu.setAttribute('aria-expanded','false');}});
   bindFilters('skillFilters','skillFilter',renderSkills);bindFilters('projectFilters','projectFilter',renderProjects);bindFilters('experienceFilters','experienceFilter',renderExperience);
+  document.querySelector('.thesis-tabs')?.addEventListener('click',e=>{const btn=e.target.closest('[data-thesis-view]');if(!btn)return;document.querySelectorAll('.thesis-tab').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false')});btn.classList.add('active');btn.setAttribute('aria-selected','true');state.thesisView=btn.dataset.thesisView;renderThesis();});
   document.querySelector('.lab-tabs')?.addEventListener('click',e=>{const btn=e.target.closest('[data-dataset]');if(!btn)return;document.querySelectorAll('.lab-tab').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false')});btn.classList.add('active');btn.setAttribute('aria-selected','true');state.labDataset=btn.dataset.dataset;renderLab();});
   document.getElementById('yieldSort')?.addEventListener('change',renderLab);
   document.getElementById('contactForm')?.addEventListener('submit',submitContact);

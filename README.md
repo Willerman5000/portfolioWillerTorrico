@@ -111,3 +111,18 @@ La web pública omite documento de identidad, domicilio exacto, estado civil, fe
 ## Datos y afirmaciones
 
 La redacción inicial es deliberadamente conservadora. Donde los CVs fuente tenían diferencias (por ejemplo, institución financiera asociada a una experiencia), v1.0 prioriza el CV detallado en español y evita afirmaciones no respaldadas por esa fuente.
+
+---
+
+## v1.1 · Maestría + perfil profesional
+
+Esta versión agrega un caso interactivo basado en la tesis de Maestría de Willer Torrico sobre infiltrabilidad de suelos y riego por aspersión en Cliza. Incluye análisis por clases de infiltrabilidad, metodología, criterios de diseño y manejo, conclusiones y mapas originales de la tesis.
+
+También incorpora una versión formal de la fotografía de perfil en `frontend/assets/img/willer-profile-formal.jpg`.
+
+### Base de datos
+
+- Instalación nueva: ejecutar `database/schema.sql`.
+- Base v1.0 ya instalada: ejecutar `database/migration_v1_1.sql`.
+
+Ver `docs/V1_1.md` y `docs/DATA_PROVENANCE.md` para detalles.
