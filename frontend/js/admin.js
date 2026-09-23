@@ -13,36 +13,70 @@ async function api(path, options={}){
   const headers = new Headers(options.headers || {});
   if(adminState.token) headers.set('Authorization', `Bearer ${adminState.token}`);
   if(options.body && !(options.body instanceof FormData)) headers.set('Content-Type','application/json');
-  const res = await fetch(path, {...options, headers});
+  const res = await fetch(path, {...options, headers, cache:'no-store'});
   const type = res.headers.get('content-type') || '';
   const body = type.includes('application/json') ? await res.json() : await res.text();
   if(!res.ok){
-    if(res.status===401){logout(false);}
-    throw new Error(body?.error || body?.message || body || `HTTP ${res.status}`);
+    const err = new Error(body?.error || body?.message || body || `HTTP ${res.status}`);
+    err.status = res.status;
+    err.path = path;
+    throw err;
   }
   return body;
 }
 
 async function login(e){
   e.preventDefault();
-  const status=$('#loginStatus'); status.textContent='Ingresando…'; status.className='form-status';
+  const status=$('#loginStatus');
+  status.textContent='Ingresando…';
+  status.className='form-status';
   const fd=new FormData(e.currentTarget);
   try{
     const out=await api('/api/auth/login',{method:'POST',body:JSON.stringify(Object.fromEntries(fd.entries()))});
-    adminState.token=out.access_token; adminState.user=out.user;
+    adminState.token=out.access_token;
+    adminState.user=out.user;
     sessionStorage.setItem('portfolio-admin-token',adminState.token);
-    await openApp();
-  }catch(err){status.textContent=err.message || 'No se pudo iniciar sesión.';status.className='form-status error';}
+    status.textContent='Credenciales correctas. Abriendo panel…';
+    status.className='form-status ok';
+    await openApp(true);
+  }catch(err){
+    status.textContent=err.message || 'No se pudo iniciar sesión.';
+    status.className='form-status error';
+  }
 }
 
-async function openApp(){
+async function openApp(fromLogin=false){
   if(!adminState.token) return;
+  let me;
   try{
-    const me=await api('/api/admin/me'); adminState.user=me.user;
-    $('#loginPanel').hidden=true; $('#adminApp').hidden=false;
-    $('#adminIdentity').textContent=adminState.user?.email || '';
+    me=await api('/api/admin/me');
+  }catch(err){
+    console.warn('Admin session check failed', err);
+    if(err.status===401 || err.status===403){
+      logout(false);
+      const status=$('#loginStatus');
+      if(status){
+        status.textContent=err.message || 'Sesión no autorizada.';
+        status.className='form-status error';
+      }
+    }
+    return;
+  }
+
+  adminState.user=me.user;
+  $('#loginPanel').hidden=true;
+  $('#adminApp').hidden=false;
+  $('#adminIdentity').textContent=adminState.user?.email || '';
+
+  try{
     await refreshAll();
-  }catch(err){console.warn(err); logout(false);}
+    setAdminStatus('Panel cargado correctamente.','ok',true);
+  }catch(err){
+    // Authentication already succeeded. A content/render error must never throw
+    // the user back to the login form.
+    console.error('Admin bootstrap/render error', err);
+    setAdminStatus(`Sesión iniciada. No se pudo cargar todo el contenido: ${err.message || err}`,'error',false);
+  }
 }
 
 function logout(reload=true){
@@ -50,13 +84,30 @@ function logout(reload=true){
   if(reload) location.reload(); else {$('#adminApp').hidden=true;$('#loginPanel').hidden=false;}
 }
 
+function setAdminStatus(message='', kind='', autoHide=false){
+  const el=$('#adminGlobalStatus');
+  if(!el) return;
+  el.textContent=message;
+  el.className=`form-status admin-global-status ${kind||''}`.trim();
+  el.hidden=!message;
+  if(message && autoHide) setTimeout(()=>{el.hidden=true;},3500);
+}
+
+function safeRender(label, fn){
+  try{fn();}
+  catch(err){console.error(`Render ${label} failed`,err);setAdminStatus(`Error visual en ${label}: ${err.message||err}`,'error',false);}
+}
+
 async function refreshAll(){
   const out=await api('/api/admin/bootstrap');
-  adminState.data.projects=out.projects||[];
-  adminState.data.experiences=out.experiences||[];
-  adminState.data.profile=out.profile||null;
-  adminState.data.messages=out.messages||[];
-  renderProjects(); renderExperiences(); renderProfile(); renderMessages();
+  adminState.data.projects=Array.isArray(out.projects)?out.projects:[];
+  adminState.data.experiences=Array.isArray(out.experiences)?out.experiences:[];
+  adminState.data.profile=out.profile&&typeof out.profile==='object'?out.profile:{};
+  adminState.data.messages=Array.isArray(out.messages)?out.messages:[];
+  safeRender('proyectos',renderProjects);
+  safeRender('experiencia',renderExperiences);
+  safeRender('perfil',renderProfile);
+  safeRender('mensajes',renderMessages);
 }
 
 function renderProjects(){
@@ -190,7 +241,7 @@ function init(){
   $('#loginForm').addEventListener('submit',login);$('#logoutBtn').addEventListener('click',()=>logout(true));
   $('#newProjectBtn').onclick=()=>openProjectEditor();$('#newExperienceBtn').onclick=()=>openExperienceEditor();
   $('#editorClose').onclick=()=>$('#editorDialog').close();
-  bindTabs(); if(adminState.token) openApp();
+  bindTabs(); if(adminState.token) openApp(false);
 }
 
 document.addEventListener('DOMContentLoaded',init);

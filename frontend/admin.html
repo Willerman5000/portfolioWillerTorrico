@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
   <title>Admin · Portfolio Willer Torrico</title>
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="stylesheet" href="/css/styles.css?v=1.1.5" />
+  <link rel="stylesheet" href="/css/admin.css?v=1.1.5" />
 </head>
 <body class="admin-body">
   <main class="admin-main">
     <section class="admin-login" id="loginPanel">
       <div class="admin-card login-card">
         <a href="/" class="brand">WT</a>
-        <span class="section-kicker">Portfolio CMS · v1.0</span>
+        <span class="section-kicker">Portfolio CMS · v1.1.5</span>
         <h1>Administrar contenido</h1>
         <p>Ingresá con el usuario creado en Supabase Auth y autorizado en <code>portfolio_admins</code>.</p>
         <form id="loginForm">
@@ -39,7 +39,7 @@
           <button class="admin-tab" data-tab="messages">Mensajes</button>
         </aside>
 
-        <div class="admin-content">
+        <div class="admin-content"><p id="adminGlobalStatus" class="form-status admin-global-status" hidden></p>
           <section class="admin-section active" data-panel="projects">
             <div class="admin-title-row"><div><span class="section-kicker">Contenido</span><h2>Proyectos / trabajos</h2></div><button class="btn primary" id="newProjectBtn">+ Nuevo trabajo</button></div>
             <div id="projectsAdminList" class="admin-list"></div>
@@ -69,6 +69,6 @@
     <form id="editorForm" class="admin-form dialog-form"></form>
   </dialog>
 
-  <script src="/js/admin.js" defer></script>
+  <script src="/js/admin.js?v=1.1.5" defer></script>
 </body>
 </html>

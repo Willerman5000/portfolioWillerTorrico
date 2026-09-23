@@ -148,3 +148,12 @@ Esta entrega incluye todos los binarios en `frontend/assets/` y además un respa
 Diagnóstico online: `/api/media-check`. Todos los elementos deberían devolver `exists: true`.
 
 **Para GitHub:** el ZIP `GITHUB_READY` no tiene carpeta envolvente; subir/reemplazar directamente su contenido en la raíz del repositorio.
+
+
+## v1.1.5 · Media + Admin Stability
+
+- La fotografía principal está embebida en `index.html`, también dentro de `app.js` y además disponible en `/api/media/profile`.
+- Los mapas y gráficos críticos de tesis están embebidos en `app.js`; los archivos físicos siguen incluidos como respaldo.
+- Se eliminó SRI de Leaflet porque el navegador estaba bloqueando `leaflet.css` por un digest distinto al declarado.
+- El panel admin ya no vuelve al login si la autenticación fue correcta pero falla el render de un bloque posterior.
+- `/api/health` y `/api/media-check` reportan `1.1.5`.
