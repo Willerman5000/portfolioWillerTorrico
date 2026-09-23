@@ -589,6 +589,13 @@
             "url": "/assets/thesis/location_map.png",
             "caption_es": "Localización de Cliza en Cochabamba, Bolivia.",
             "caption_en": "Location of Cliza in Cochabamba, Bolivia."
+          },
+          {
+            "title_es": "Mapa de parcelas y puntos de observación",
+            "title_en": "Sampling plots and observation points map",
+            "url": "/assets/thesis/sampling_points_map.jpeg",
+            "caption_es": "Ubicación de parcelas, muestreos de suelo y pruebas de infiltración utilizadas en la investigación.",
+            "caption_en": "Location of plots, soil samples and infiltration tests used in the research."
           }
         ]
       }

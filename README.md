@@ -128,3 +128,12 @@ También incorpora una versión formal de la fotografía de perfil en `frontend/
 - Base v1.0 ya instalada: ejecutar `database/migration_v1_1.sql`.
 
 Ver `docs/V1_1.md` y `docs/DATA_PROVENANCE.md` para detalles.
+
+## v1.1.2 · Thesis visual assets fix
+- Replaced thesis placeholders with image assets generated directly from the thesis figures/data.
+- Correct `location_map.png` from Figure 9.
+- Correct `soil_units_validated_map.jpeg` from Figure 11.
+- Correct `infiltrability_map.jpeg` from Figure 20.
+- Added `sampling_points_map.jpeg` from Figure 6.
+- Added static data charts for area distribution, basic infiltration ranges, 5-hour accumulated infiltration and maximum irrigation time.
+- Thesis views now display those static chart assets in addition to interactive HTML data.

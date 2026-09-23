@@ -129,3 +129,10 @@ linear-gradient(180deg,var(--bg),color-mix(in srgb,var(--bg) 88%,#09243f 12%))}
 }
 @media (max-width:480px){.thesis-stats{grid-template-columns:1fr}.skills-grid{grid-template-columns:1fr}.language-switch span{display:none}.bar-label{font-size:.72rem}.bar-row{grid-template-columns:76px 1fr 38px}.hero-actions{flex-direction:column}.hero-actions .btn{width:100%}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation-duration:.001ms!important;transition-duration:.001ms!important}.reveal{opacity:1;transform:none}}
+
+/* v1.1.2 · thesis figures generated from documented thesis data */
+.thesis-static-charts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.thesis-static-charts figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.thesis-static-charts img{display:block;width:100%;height:auto;object-fit:contain;background:#fff}
+.thesis-static-charts figcaption{padding:9px 11px;color:var(--muted);font-size:.72rem;background:var(--panel-2)}
+@media (max-width:760px){.thesis-static-charts{grid-template-columns:1fr}}

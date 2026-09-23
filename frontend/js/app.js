@@ -273,6 +273,10 @@ function renderThesis(){
               <strong>${c.area_pct}%</strong>
             </div>`).join('')}</div>
           <p class="thesis-note">${tr('thesis.rounding')}</p>
+          <div class="thesis-static-charts">
+            <figure><img src="/assets/thesis/area_distribution.png" alt="${state.lang==='es'?'Distribución de clases de infiltrabilidad':'Distribution of infiltrability classes'}" loading="lazy"><figcaption>${state.lang==='es'?'Superficie municipal por clase de infiltrabilidad':'Municipal area by infiltrability class'}</figcaption></figure>
+            <figure><img src="/assets/thesis/basic_infiltration_ranges.png" alt="${state.lang==='es'?'Rangos de infiltración básica':'Basic infiltration ranges'}" loading="lazy"><figcaption>${state.lang==='es'?'Rangos documentados de infiltración básica':'Documented basic-infiltration ranges'}</figcaption></figure>
+          </div>
         </div>
         <div class="thesis-class-cards">${classes.map(c=>`
           <article class="thesis-class-card">
@@ -298,6 +302,10 @@ function renderThesis(){
               <div class="irrigation-track"><span style="width:${(c.max_irrigation_minutes/maxMin)*100}%"></span></div>
               <strong>${esc(c.max_irrigation)}</strong>
             </div>`).join('')}</div>
+          <div class="thesis-static-charts">
+            <figure><img src="/assets/thesis/irrigation_time_by_class.png" alt="${state.lang==='es'?'Tiempo máximo de riego por clase':'Maximum irrigation time by class'}" loading="lazy"><figcaption>${state.lang==='es'?'Tiempo máximo de riego documentado':'Documented maximum irrigation time'}</figcaption></figure>
+            <figure><img src="/assets/thesis/accumulated_infiltration_5h.png" alt="${state.lang==='es'?'Infiltración acumulada a cinco horas':'Five-hour accumulated infiltration'}" loading="lazy"><figcaption>${state.lang==='es'?'Infiltración acumulada después de 5 horas':'Accumulated infiltration after 5 hours'}</figcaption></figure>
+          </div>
         </div>
         <div class="thesis-findings">
           <span class="section-kicker">${state.lang==='es'?'Conclusiones de diseño':'Design findings'}</span>
