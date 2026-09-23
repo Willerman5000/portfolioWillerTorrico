@@ -238,12 +238,33 @@ def static_cache_policy(response):
 
 @app.get("/api/health")
 def health():
-    return jsonify({"ok": True, "version": "1.1.3", "supabase_configured": configured()})
+    return jsonify({"ok": True, "version": "1.1.4", "supabase_configured": configured()})
 
 
 @app.get("/api/public/bootstrap")
 def public_bootstrap():
     return jsonify(get_public_bootstrap())
+
+
+@app.get("/api/media-check")
+def media_check():
+    critical = [
+        "assets/img/willer-profile-formal.jpg",
+        "assets/img/willer-profile-source.jpg",
+        "assets/thesis/infiltrability_map.jpeg",
+        "assets/thesis/soil_units_validated_map.jpeg",
+        "assets/thesis/location_map.png",
+        "assets/thesis/sampling_points_map.jpeg",
+        "assets/thesis/area_distribution.png",
+        "assets/thesis/basic_infiltration_ranges.png",
+        "assets/thesis/irrigation_time_by_class.png",
+        "assets/thesis/accumulated_infiltration_5h.png",
+    ]
+    status = {}
+    for rel in critical:
+        p = FRONTEND_DIR / rel
+        status[rel] = {"exists": p.is_file(), "bytes": p.stat().st_size if p.is_file() else 0}
+    return jsonify({"ok": all(x["exists"] for x in status.values()), "version": "1.1.4", "files": status})
 
 
 @app.post("/api/contact")

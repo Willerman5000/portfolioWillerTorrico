@@ -1,3 +1,5 @@
+# Portfolio Willer Torrico - v1.1.4
+
 **v1.1.1 hotfix:** corrige fotografía y tesis.
 
 # Portfolio Willer Torrico - v1.0
@@ -129,11 +131,20 @@ También incorpora una versión formal de la fotografía de perfil en `frontend/
 
 Ver `docs/V1_1.md` y `docs/DATA_PROVENANCE.md` para detalles.
 
-## v1.1.2 · Thesis visual assets fix
-- Replaced thesis placeholders with image assets generated directly from the thesis figures/data.
-- Correct `location_map.png` from Figure 9.
-- Correct `soil_units_validated_map.jpeg` from Figure 11.
-- Correct `infiltrability_map.jpeg` from Figure 20.
-- Added `sampling_points_map.jpeg` from Figure 6.
-- Added static data charts for area distribution, basic infiltration ranges, 5-hour accumulated infiltration and maximum irrigation time.
-- Thesis views now display those static chart assets in addition to interactive HTML data.
+
+## v1.1.3 · Media Stability Fix
+
+- Evita que la respuesta tardía de Supabase reemplace la foto local por una URL antigua o rota.
+- Los mapas de tesis usan como fuente canónica los assets incluidos en el repositorio.
+- Todas las imágenes críticas tienen fallback encadenado.
+- CSS, JS y JSON usan política no-cache para evitar que Render entregue una versión anterior después del deploy.
+- Las rutas de assets críticos se hicieron relativas para mejorar portabilidad.
+
+
+## v1.1.4 · Media self-contained
+
+Esta entrega incluye todos los binarios en `frontend/assets/` y además un respaldo embebido en `frontend/js/embedded-media.js` para la fotografía y visuales críticos de la tesis. Si un asset estático falta o una ruta antigua de Supabase apunta a un archivo inexistente, el frontend usa automáticamente el respaldo embebido.
+
+Diagnóstico online: `/api/media-check`. Todos los elementos deberían devolver `exists: true`.
+
+**Para GitHub:** el ZIP `GITHUB_READY` no tiene carpeta envolvente; subir/reemplazar directamente su contenido en la raíz del repositorio.

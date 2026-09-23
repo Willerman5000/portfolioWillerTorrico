@@ -61,6 +61,14 @@ function cleanMediaUrl(value=''){
   return '';
 }
 
+function resolveMediaUrl(value=''){
+  const url = cleanMediaUrl(value);
+  if(!url) return '';
+  if(url.startsWith('data:image/')) return url;
+  const embedded = window.PORTFOLIO_EMBEDDED_MEDIA || {};
+  return embedded[url] || url;
+}
+
 function mergeThesisMaps(localMaps=[], remoteMaps=[]){
   // Thesis illustrations are versioned static assets shipped with the portfolio.
   // Supabase may still contain stale URLs from an older deploy; keep the local URL
@@ -126,7 +134,7 @@ function mergeBootstrap(localData={}, remoteData={}){
 function setStableImage(img, primary, fallbacks=[]){
   if(!img) return;
   const candidates=[primary,...fallbacks]
-    .map(cleanMediaUrl)
+    .map(resolveMediaUrl)
     .filter(Boolean)
     .filter((x,i,a)=>a.indexOf(x)===i);
   let index=0;
